@@ -20,7 +20,7 @@ function show_accounts($instance_url, $access_token) {
  
     echo "$total_size record(s) returned<br/><br/>";
     foreach ((array) $response['records'] as $record) {
-        echo $record['Id'] . ", " . $record['Name'] . "<br/>";
+        echo $record['Id'] . ", " . $record['Name'] . ", " . $record['AnnualRevenue'] . ", " . $record['Industry'] . "<br/>";
     }
     echo "<br/>";
 }
