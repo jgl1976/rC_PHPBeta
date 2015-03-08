@@ -152,15 +152,15 @@ function delete_account($id, $instance_url, $access_token) {
                 die("Error - instance URL missing from session!");
             }
             show_accounts($instance_url, $access_token);
-            $id = create_account("My New Org", $instance_url, $access_token);
-            show_account($id, $instance_url, $access_token);
-            show_accounts($instance_url, $access_token);
-            update_account($id, "My New Org, Inc", "San Francisco",
-                    $instance_url, $access_token);
-            show_account($id, $instance_url, $access_token);
-            show_accounts($instance_url, $access_token);
-            delete_account($id, $instance_url, $access_token);
-            show_accounts($instance_url, $access_token);
+            //$id = create_account("My New Org", $instance_url, $access_token);
+            //show_account($id, $instance_url, $access_token);
+            //show_accounts($instance_url, $access_token);
+            //update_account($id, "My New Org, Inc", "San Francisco",
+                    //$instance_url, $access_token);
+           //show_account($id, $instance_url, $access_token);
+           //show_accounts($instance_url, $access_token);
+           //delete_account($id, $instance_url, $access_token);
+           //show_accounts($instance_url, $access_token);
             ?>
         </tt>
 <table id="events-id2" class="table table-bordered" data-url="data1.json" data-height="299" data-search="true">
