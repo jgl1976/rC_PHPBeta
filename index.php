@@ -26,7 +26,8 @@
 <div class="container">
 
 <h1>DMA PHP App</h1>
-<img src="img/beta.png" alt="Beta" class="img-rounded">
+<img src="img/beta.png" alt="Beta" class="img-rounded"><br>
+<h2>Please sign into Salesforce</h2><br>
 <script type="text/javascript" language="javascript">
     if (location.protocol != "https:") {
         document.write("OAuth will not work correctly from plain http. "+ "Please use an https URL.");
