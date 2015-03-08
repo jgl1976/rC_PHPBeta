@@ -279,7 +279,7 @@ function delete_account($id, $instance_url, $access_token) {
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>REST/OAuth Example</title>
+        <title>roundCorner Data Migration</title>
 
     </head>
 
