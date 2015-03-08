@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id from Opportunity LIMIT 100";
+    $query = "SELECT AccountName, Id from Opportunity LIMIT 100";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
@@ -42,7 +42,7 @@ function show_accounts($instance_url, $access_token) {
 
     foreach ((array) $response['records'] as $record) {
 
-        echo $record['Id'] . ", " . $record['Name'] . "<br/>";
+        echo $record['Id'] . ", " . $record['AccountName'] . "<br/>";
 
     }
 
@@ -58,7 +58,7 @@ function create_account($name, $instance_url, $access_token) {
 
  
 
-    $content = json_encode(array("Name" => $name));
+    $content = json_encode(array("AccountName" => $name));
 
  
 
