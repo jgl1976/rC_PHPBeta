@@ -34,7 +34,7 @@
 
     } else {
 
-        document.write("<a href=\"oauth.php\" type="button" class="btn btn-primary">Sign In</a>");
+        document.write("<a href=\"oauth.php\" type=\"button\" class=\"btn btn-primary\">Sign In</a>");
 
     }
 
