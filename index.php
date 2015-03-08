@@ -25,7 +25,7 @@
 <body>
 <div class="container">
 
-<h1>PHP DMA App</h1>
+<h1>DMA PHP App</h1>
 <img src="img/beta.png" alt="Beta" class="img-rounded">
 <script type="text/javascript" language="javascript">
     if (location.protocol != "https:") {
