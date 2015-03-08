@@ -2,10 +2,30 @@
 session_start();
  
 function show_accounts($instance_url, $access_token) {
-    $query = "SELECT Id, Name, AnnualRevenue, Industry from Opportunities LIMIT 100";
+    $sqlCommand = "SELECT Id, Name, AnnualRevenue, Industry from Opportunities LIMIT 100";
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
- $allInfo = "";
-    $curl = curl_init($url);
+$allInfo = "";
+
+$query = mysql_query($sqlCommand) or die (mysql_error());
+$rows = mysql_fetch_row($query); 
+	
+	if ($num_rows > 0) {
+		$allInfo = '<div class="allInfo">';
+
+		// get all the video details
+		while($row = mysql_fetch_array($sql2)){ 
+			 $id = $row["Id"];
+			 $name = $row["Name"];
+			 $annualRevenue = $row["AnnualRevenue"];
+			 $industry = $row["Industry"];
+			 
+			 
+			 echo $id, $name, $annualRevenue, $industry;		 
+         }
+		 
+	}
+}
+    /*$curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER,
@@ -23,7 +43,7 @@ function show_accounts($instance_url, $access_token) {
         $allInfo .= $record['Id'] . ", " . $record['Name'] . ", " . $record['AnnualRevenue'] . ", " . $record['Industry'] . "<br/>";
     }
 	echo $allInfo . "<br/>";
-}
+}*/
  
 function create_account($name, $instance_url, $access_token) {
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
