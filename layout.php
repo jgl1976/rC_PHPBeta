@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, Amount from Opportunity LIMIT 100";
+    $query = "SELECT * from Opportunity LIMIT 100";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
