@@ -9,10 +9,19 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>REST/OAuth Example</title>
+<title>rC PHP DMA</title>
 
 </head>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+    <head>
+    <title>rC PHP DMA</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
 <body>
 
 <script type="text/javascript" language="javascript">
@@ -25,12 +34,11 @@
 
     } else {
 
-        document.write("<a href=\"oauth.php\">Click here to retrieve accounts from Salesforce via REST/OAuth.</a>");
+        document.write("<a href=\"oauth.php\" type="button" class="btn btn-primary">Sign In</a>");
 
     }
 
 </script>
-<P>comment test</P>
 </body>
 
 </html>
