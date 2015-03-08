@@ -2,7 +2,7 @@
 session_start();
  
 function show_accounts($instance_url, $access_token) {
-    $query = "SELECT * from Opportunities LIMIT 100";
+    $query = "SELECT Id, Name, AnnualRevenue, Industry from Opportunities LIMIT 100";
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
  
     $curl = curl_init($url);
