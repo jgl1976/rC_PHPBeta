@@ -351,6 +351,51 @@ function delete_account($id, $instance_url, $access_token) {
 
         </tt>
 
+
+<table id="events-id2" data-url="data1.json" data-height="299" data-search="true">
+    <thead>
+    <tr>
+        <th data-field="state" data-checkbox="true"></th>
+        <th data-field="id" data-sortable="true">Item ID</th>
+        <th data-field="name" data-sortable="true">Item Name</th>
+        <th data-field="price" data-sortable="true">Item Price</th>
+        <th data-field="operate" data-formatter="operateFormatter" data-events="operateEvents">Item Operate</th>
+    </tr>
+    </thead>
+</table>
+<script>
+    function operateFormatter(value, row, index) {
+        return [
+            '<a class="like" href="javascript:void(0)" title="Like">',
+                '<i class="glyphicon glyphicon-heart"></i>',
+            '</a>',
+            '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
+                '<i class="glyphicon glyphicon-edit"></i>',
+            '</a>',
+            '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
+                '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+
+    window.operateEvents = {
+        'click .like': function (e, value, row, index) {
+            alert('You click like icon, row: ' + JSON.stringify(row));
+            console.log(value, row, index);
+        },
+        'click .edit': function (e, value, row, index) {
+            alert('You click edit icon, row: ' + JSON.stringify(row));
+            console.log(value, row, index);
+        },
+        'click .remove': function (e, value, row, index) {
+            alert('You click remove icon, row: ' + JSON.stringify(row));
+            console.log(value, row, index);
+        }
+    };
+</script>
+
+
+
     </body>
 
 </html>
