@@ -20,9 +20,9 @@ $rows = mysql_fetch_row($query);
 			 $industry = $row["Industry"];
 			 
 			 
-			 echo $id, $name, $annualRevenue, $industry;		 
+			 //echo $id, $name, $annualRevenue, $industry;		 
          }
-		 
+		 $allInfo .="</div>";
 	}
 }
     /*$curl = curl_init($url);
@@ -161,7 +161,7 @@ function delete_account($id, $instance_url, $access_token) {
     <body>
         <tt>
             <?php
-            $access_token = $_SESSION['access_token'];
+            /*$access_token = $_SESSION['access_token'];
             $instance_url = $_SESSION['instance_url'];
  
             if (!isset($access_token) || $access_token == "") {
@@ -180,7 +180,7 @@ function delete_account($id, $instance_url, $access_token) {
             show_account($id, $instance_url, $access_token);
             show_accounts($instance_url, $access_token);
             delete_account($id, $instance_url, $access_token);
-            show_accounts($instance_url, $access_token);
+            show_accounts($instance_url, $access_token);*/
             ?>
         </tt>
 <table id="events-id2" class="table table-bordered" data-url="data1.json" data-height="299" data-search="true">
@@ -224,5 +224,6 @@ function delete_account($id, $instance_url, $access_token) {
     };
 </script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<?php echo $allInfo; ?>
     </body>
 </html>
