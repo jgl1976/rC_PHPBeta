@@ -4,7 +4,7 @@ session_start();
 function show_accounts($instance_url, $access_token) {
     $query = "SELECT Id, Name, AnnualRevenue, Industry from Opportunities LIMIT 100";
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
- 
+ $allInfo = "";
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -20,9 +20,9 @@ function show_accounts($instance_url, $access_token) {
  
     echo "$total_size record(s) returned<br/><br/>";
     foreach ((array) $response['records'] as $record) {
-        echo $record['Id'] . ", " . $record['Name'] . ", " . $record['AnnualRevenue'] . ", " . $record['Industry'] . "<br/>";
+        $allInfo .= $record['Id'] . ", " . $record['Name'] . ", " . $record['AnnualRevenue'] . ", " . $record['Industry'] . "<br/>";
     }
-    echo "<br/>";
+	echo $allInfo . "<br/>";
 }
  
 function create_account($name, $instance_url, $access_token) {
