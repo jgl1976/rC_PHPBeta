@@ -352,7 +352,7 @@ function delete_account($id, $instance_url, $access_token) {
         </tt>
 
 
-<table id="events-id2" data-url="data1.json" data-height="299" data-search="true">
+<table id="events-id2" class="table table-bordered" data-url="data1.json" data-height="299" data-search="true">
     <thead>
     <tr>
         <th data-field="state" data-checkbox="true"></th>
