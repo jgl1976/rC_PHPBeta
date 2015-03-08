@@ -2,30 +2,10 @@
 session_start();
  
 function show_accounts($instance_url, $access_token) {
-    $sqlCommand = "SELECT Id, Name, AnnualRevenue, Industry from Opportunities LIMIT 100";
+    $query = "SELECT * from Opportunities LIMIT 100";
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
-$allInfo = "";
-
-$query = mysql_query($sqlCommand) or die (mysql_error());
-$rows = mysql_fetch_row($query); 
-	
-	if ($num_rows > 0) {
-		$allInfo = '<div class="allInfo">';
-
-		// get all the video details
-		while($row = mysql_fetch_array($sql2)){ 
-			 $id = $row["Id"];
-			 $name = $row["Name"];
-			 $annualRevenue = $row["AnnualRevenue"];
-			 $industry = $row["Industry"];
-			 
-			 
-			 //echo $id, $name, $annualRevenue, $industry;		 
-         }
-		 $allInfo .="</div>";
-	}
-}
-    /*$curl = curl_init($url);
+ 
+    $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPHEADER,
@@ -40,10 +20,10 @@ $rows = mysql_fetch_row($query);
  
     echo "$total_size record(s) returned<br/><br/>";
     foreach ((array) $response['records'] as $record) {
-        $allInfo .= $record['Id'] . ", " . $record['Name'] . ", " . $record['AnnualRevenue'] . ", " . $record['Industry'] . "<br/>";
+        echo $record['Id'] . ", " . $record['Name'] . "<br/>";
     }
-	echo $allInfo . "<br/>";
-}*/
+    echo "<br/>";
+}
  
 function create_account($name, $instance_url, $access_token) {
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
@@ -161,7 +141,7 @@ function delete_account($id, $instance_url, $access_token) {
     <body>
         <tt>
             <?php
-            /*$access_token = $_SESSION['access_token'];
+            $access_token = $_SESSION['access_token'];
             $instance_url = $_SESSION['instance_url'];
  
             if (!isset($access_token) || $access_token == "") {
@@ -180,7 +160,7 @@ function delete_account($id, $instance_url, $access_token) {
             show_account($id, $instance_url, $access_token);
             show_accounts($instance_url, $access_token);
             delete_account($id, $instance_url, $access_token);
-            show_accounts($instance_url, $access_token);*/
+            show_accounts($instance_url, $access_token);
             ?>
         </tt>
 <table id="events-id2" class="table table-bordered" data-url="data1.json" data-height="299" data-search="true">
@@ -224,6 +204,5 @@ function delete_account($id, $instance_url, $access_token) {
     };
 </script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
-<?php echo $allInfo; ?>
     </body>
 </html>
