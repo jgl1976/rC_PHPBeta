@@ -25,13 +25,13 @@
 <body>
 <div class="container">
 
-<h2 class="form-signin-heading">Please Sign into the roundCorner PHP Data Migration Automation App</h2>
-
+<h2 class="form-signin-heading">Please Sign into the roundCorner PHP DMA App</h2>
+<img src="img/beta.png" alt="Beta" class="img-rounded">
 <script type="text/javascript" language="javascript">
     if (location.protocol != "https:") {
         document.write("OAuth will not work correctly from plain http. "+ "Please use an https URL.");
     } else {
-        document.write("<a href=\"oauth.php\" type=\"button\" class=\"btn btn-primary\">Sign In</a>");
+        document.write("<a href=\"oauth.php\" class=\"btn btn-primary btn-lg\">Sign In</a>");
     }
 </script>
 
