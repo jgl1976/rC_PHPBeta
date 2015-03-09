@@ -4,6 +4,6 @@
 
 /*Custom CSS */
 
-.content-table td {
+.td {
     text-align: center;
 }
