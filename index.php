@@ -21,6 +21,7 @@
     <title>rC PHP DMA</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     </head>
 <body>
 <div class="container">

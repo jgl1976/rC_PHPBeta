@@ -1,0 +1,9 @@
+/*!
+ * roundCorner v0.4.9 (http://roundcorner.com)
+ */
+
+/*Custom CSS */
+
+.content-table td {
+    text-align: center;
+}
