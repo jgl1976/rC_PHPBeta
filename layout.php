@@ -42,7 +42,7 @@ function show_accounts($instance_url, $access_token) {
 
     foreach ((array) $response['records'] as $record) {
 
-        echo "<div class='container'><table class='table'><tr>".$record['Id'] ."</tr><tr>" . $record['Name'] . "</tr><tr>$" . $record['Amount'] . "</tr></table></div><br/>";
+        echo "<div class='container'><table class='table'><td>".$record['Id'] ."</td><td>" . $record['Name'] . "</td><td>$" . $record['Amount'] . "</td></table></div><br/>";
 
     }
 
