@@ -38,7 +38,7 @@ function show_accounts($instance_url, $access_token) {
 
  
 
-    echo "$total_size record(s) returned<br/><br/>";
+    echo "<div class='container'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>";
 
     foreach ((array) $response['records'] as $record) {
 
