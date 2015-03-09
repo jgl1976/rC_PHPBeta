@@ -279,7 +279,7 @@ function delete_account($id, $instance_url, $access_token) {
     <head>
 <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
-
+    <link href="css/style.css" rel="stylesheet">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>rC PHP DMA</title>
