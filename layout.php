@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, AnnualRevenue from Account LIMIT 250000";
+    $query = "SELECT Name, Id, AnnualRevenue from Account LIMIT 100";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
@@ -35,6 +35,10 @@ function show_accounts($instance_url, $access_token) {
  
 
     $total_size = $response['totalSize'];
+	
+	if(isset($query)){
+		echo "query is set";	
+	}
 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
