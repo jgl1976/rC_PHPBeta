@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, Amount from Opportunity LIMIT 10000";
+    $query = "SELECT Name, Id, Amount from Opportunity LIMIT 250000";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
@@ -39,7 +39,9 @@ function show_accounts($instance_url, $access_token) {
  
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><td><h3>ID</h3></td><td align='center'><h3>Name</h3></td><td align='center'><h3>Amount</h3></td></table></div></div>";
+    <div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><td><h3>ID</h3></td><td align='center'><h3>Name</h3></td><td align='center'><h3>Amount</h3></td>
+    <tr>
+      <td>". $record['Id'] . "</td><td>" , $record['Name'] . "</td><td>" . $record['Amount'] . "</td></tr></table></div></div>";
 
     foreach ((array) $response['records'] as $record) {
 

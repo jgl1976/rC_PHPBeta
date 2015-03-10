@@ -1,10 +1,10 @@
 <?php
 
-define("CLIENT_ID", "3MVG9A2kN3Bn17hvZc9nekjyHNoZI732S5MWbq2kMdJDrpKZR5jjym37eELSpIoEUPzYQaDtjI7sD_GlTlCbk");
+define("CLIENT_ID", "3MVG9fMtCkV6eLhePwBjNw.lHHuAXPkLhDivF6di2chfNNQq2SNUn9qX0a.phDXUj2TaAvOcJ4BolLqqiSluH");
 
-define("CLIENT_SECRET", "4281366282980209317");
+define("CLIENT_SECRET", "1519327188401123285");
 
-define("REDIRECT_URI", "https://fathomless-fjord-6605.herokuapp.com/oauth_callback.php");
+define("REDIRECT_URI", "https://php-restbeta.herokuapp.com/oauth_callback.php");
 
 define("LOGIN_URI", "https://login.salesforce.com");
 
