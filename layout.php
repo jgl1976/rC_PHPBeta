@@ -36,9 +36,7 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
-	if(isset($record['Id'])){
-		echo "ID is set";	
-	}
+	
 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
@@ -49,7 +47,11 @@ function show_accounts($instance_url, $access_token) {
 
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 
-    }
+    }if(isset($record['Id'])){
+		echo "ID is set";	
+	}else{
+		echo "no id is set";	
+	}
 
     echo "<br/>";
 
