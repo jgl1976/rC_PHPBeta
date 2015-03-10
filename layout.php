@@ -1,7 +1,7 @@
 <?php
 //comment
 session_start();
-
+$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
  
 
 function show_accounts($instance_url, $access_token) {
@@ -113,7 +113,7 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////	
-$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+
 
     foreach ((array) $records as $record) {
 
