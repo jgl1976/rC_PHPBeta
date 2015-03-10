@@ -36,7 +36,7 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
-	$records = $response['records'] - 2;
+	$records = $response['records'];
 	
 	
 
