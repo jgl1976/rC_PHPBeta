@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, AnnualRevenue from Account LIMIT 100";
+    $query = "SELECT Name, Id, AnnualRevenue from Account";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
@@ -43,8 +43,8 @@ function show_accounts($instance_url, $access_token) {
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";
-	
-	//////////////////////////////pagination/////////////////////////////////////////////////////////////////
+
+//////////////////////////////pagination/////////////////////////////////////////////////////////////////
 
 if (isset($record['Id']) && isset($_GET['pn'])) { // Get pn from URL vars if it is present
     $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -112,20 +112,15 @@ if ($lastPage != "1"){
     } 
 }
 
-//////////////////////////////pagination/////////////////////////////////////////////////////////////////
-while($query = $records){ 
-			 $id = $record['Id'];
-			 $name = $record['Name'];
-			 $revenue = $record['AnnualRevenue'];
+//////////////////////////////pagination/////////////////////////////////////////////////////////////////	
+$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr>";
 
-//}
+    foreach ((array) $records as $record) {
 
-    //foreach ((array) $records as $record) {
+        $dynamicTable .= "<td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
 
-        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
-
-    }	
-
+    }
+	$dynamicTable .= "</table></div></div>";
     echo "<br/>";
 
 }
@@ -392,7 +387,7 @@ function delete_account($id, $instance_url, $access_token) {
  
 
             show_accounts($instance_url, $access_token);
-
+			echo $dynamicTable;
  
 
             /*$id = create_account("My New Org", $instance_url, $access_token);
