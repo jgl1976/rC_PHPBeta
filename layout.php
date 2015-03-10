@@ -47,12 +47,12 @@ function show_accounts($instance_url, $access_token) {
 
     foreach ((array) $records as $record) {
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
-
-    }
-    echo "<br/>";
 if(isset($record["Id"])){
 	echo $record["Id"];	
 }
+    }
+    echo "<br/>";
+
 }
 
 /*function create_account($name, $instance_url, $access_token) {
