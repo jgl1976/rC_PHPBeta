@@ -46,7 +46,6 @@ function show_accounts($instance_url, $access_token) {
     foreach ((array) $response['records'] as $record) {
 
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
-		$theId = $record['Id'];
 
     }//////////////////////////////pagination/////////////////////////////////////////////////////////////////
 
@@ -94,7 +93,7 @@ if ($pn == 1) {
 $limit = 'LIMIT ' .($pn - 1) * $itemsPerPage .',' .$itemsPerPage; 
 // Now we are going to run the same query as above but this time add $limit onto the end of the SQL syntax
 // $sql2 is what we will use to fuel our while loop statement below
-$sql2 = "SELECT Id from Account WHERE Id='$theId' $limit"; 
+$sql2 = "SELECT Id from Account $limit"; 
 //////////////////////////////// END Adam's Pagination Logic ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -358,6 +357,10 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
+    <br/>
+
+        
+        <?php echo $paginationDisplay; ?>
 
         <tt>
 
