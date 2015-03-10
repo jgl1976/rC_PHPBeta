@@ -36,7 +36,7 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
-	$records = $response['records'];
+	$records = $response['records'] - 2;
 	
 	
 
@@ -46,15 +46,12 @@ function show_accounts($instance_url, $access_token) {
 
 
     foreach ((array) $records as $record) {
+		
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
     }
     echo "<br/>";
 	
-	if(count($records) > 10){
-		echo count($records);	
-	}else{
-		echo "not greater than 10";	
-	}
+	
 }
 
 /*function create_account($name, $instance_url, $access_token) {
