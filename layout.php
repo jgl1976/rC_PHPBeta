@@ -123,8 +123,6 @@ if ($lastPage != "1"){
 
 }
 
- 
-
 /*function create_account($name, $instance_url, $access_token) {
 
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
@@ -398,7 +396,7 @@ function delete_account($id, $instance_url, $access_token) {
 
  
 
-            show_accounts($instance_url, $access_token);
+            /*show_accounts($instance_url, $access_token);
 
  
 
@@ -420,7 +418,7 @@ function delete_account($id, $instance_url, $access_token) {
 
  
 
-            show_accounts($instance_url, $access_token);
+            show_accounts($instance_url, $access_token);*/
 
             ?>
 
