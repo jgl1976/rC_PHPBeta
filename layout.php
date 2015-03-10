@@ -6,7 +6,7 @@ session_start();
 $paginationDisplay = ""; // Initialize the pagination output variable
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, AnnualRevenue(SELECT Name from Opportunity LIMIT 10 OFFSET 2) From Account LIMIT 100";
+    $query = "SELECT Name, Id, AnnualRevenue From Account LIMIT 100";
 
     $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
 
