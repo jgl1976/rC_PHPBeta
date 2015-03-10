@@ -36,16 +36,15 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 
- 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><td><h3>ID</h3></td><td align='center'><h3>Name</h3></td><td align='center'><h3>Amount</h3></td>
     <tr>
-      <td>". $record['Id'] . "</td><td>" , $record['Name'] . "</td><td>" . $record['Amount'] . "</td></tr></table></div></div>";
+      <td>". $record['Id'] . "</td><td>" , $record['Name'] . "</td><td>" . $record['rC_Giving__Update_Lifetime_Summaries__c'] . "</td></tr></table></div></div>";
 
     foreach ((array) $response['records'] as $record) {
 
-        echo "<div class='container'><div class='table-responsive'><table class='table'><td>".$record['Id']."</td><td>".$record['Name']."</td><td>$".$record['Amount']."</td></table></div></div>";
+        echo "<div class='container'><div class='table-responsive'><table class='table'><td>".$record['Id']."</td><td>".$record['Name']."</td><td>$".$record['rC_Giving__Update_Lifetime_Summaries__c']."</td></table></div></div>";
 
     }
 
@@ -57,7 +56,7 @@ function show_accounts($instance_url, $access_token) {
 
 function create_account($name, $instance_url, $access_token) {
 
-    $url = "$instance_url/services/data/v20.0/sobjects/Account/";
+    $url = "$instance_url/services/data/v20.0/sobjects/Opportunity/";
 
  
 
@@ -125,7 +124,7 @@ function create_account($name, $instance_url, $access_token) {
 
 function show_account($id, $instance_url, $access_token) {
 
-    $url = "$instance_url/services/data/v20.0/sobjects/Account/$id";
+    $url = "$instance_url/services/data/v20.0/sobjects/Opportunity/$id";
 
     $curl = curl_init($url);
 
