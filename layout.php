@@ -36,7 +36,6 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
-	
 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
@@ -360,7 +359,7 @@ function delete_account($id, $instance_url, $access_token) {
     <br/>
 
         
-        <?php echo $paginationDisplay; ?>
+        <?php echo $id; ?>
 
         <tt>
 
