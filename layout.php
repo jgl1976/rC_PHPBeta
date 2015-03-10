@@ -8,7 +8,7 @@ function show_accounts($instance_url, $access_token) {
 
     $query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 100 OFFSET 0";
 
-    $url = "$instance_url/services/data/v20.0/query?q=" . urlencode($query);
+    $url = "$instance_url/services/data/v24.0/query?q=" . urlencode($query);
 
  
 
