@@ -1,7 +1,7 @@
 <?php
 //comment
 session_start();
-$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+
  
 
 function show_accounts($instance_url, $access_token) {
@@ -117,10 +117,9 @@ if ($lastPage != "1"){
 
     foreach ((array) $records as $record) {
 
-        $dynamicTable .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
+        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 
     }
-	$dynamicTable .= "</table></div></div>";
     echo "<br/>";
 
 }
@@ -387,7 +386,7 @@ function delete_account($id, $instance_url, $access_token) {
  
 
             show_accounts($instance_url, $access_token);
-			echo $dynamicTable;
+
  
 
             /*$id = create_account("My New Org", $instance_url, $access_token);
