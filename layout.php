@@ -38,12 +38,12 @@ function show_accounts($instance_url, $access_token) {
 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td><h3>ID</h3></td><td><h3>Name</h3></td><td><h3>AnnualRevenue</h3></td></tr></table></br>";
+    <div class='container'><div class='table-responsive'><table class='table'><tr><td><h3>ID</h3></td><td><h3>Name</h3></td><td><h3>AnnualRevenue</h3></td></tr></table></br>";
 
 
     foreach ((array) $response['records'] as $record) {
 
-        echo "<div class='container'><div class='table-responsive'><table class='table'><tr><td>".$record['Id']."</td><td>".$record['Name']."</td><td>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
+        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td>".$record['Id']."</td><td>".$record['Name']."</td><td>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 
     }
 
