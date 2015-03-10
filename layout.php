@@ -113,11 +113,11 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////	
-$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr>";
+$dynamicTable = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 
     foreach ((array) $records as $record) {
 
-        $dynamicTable .= "<td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
+        $dynamicTable .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
 
     }
 	$dynamicTable .= "</table></div></div>";
