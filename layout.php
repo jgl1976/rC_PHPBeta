@@ -6,9 +6,9 @@ session_start();
 $paginationDisplay = ""; // Initialize the pagination output variable
 function show_accounts($instance_url, $access_token) {
 
-    $query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 100 OFFSET 10";
+    $query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 5 OFFSET 0";
 
-    $url = "$instance_url/services/data/v24.0/query?q=" . urlencode($query);
+    $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
  
 
@@ -37,7 +37,6 @@ function show_accounts($instance_url, $access_token) {
     $total_size = $response['totalSize'];
 	
 	$records = $response['records'];
-	
 	
 
 
