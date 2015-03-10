@@ -93,7 +93,7 @@ if ($pn == 1) {
 $limit = 'LIMIT ' .($pn - 1) * $itemsPerPage .',' .$itemsPerPage; 
 // Now we are going to run the same query as above but this time add $limit onto the end of the SQL syntax
 // $sql2 is what we will use to fuel our while loop statement below
-$sql2 = "SELECT Id from Account $limit"; 
+$sql2 = "SELECT Id from Account LIMIT 3"; 
 //////////////////////////////// END Adam's Pagination Logic ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
