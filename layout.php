@@ -36,8 +36,8 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
-	if(isset($query)){
-		echo "query is set";	
+	if(isset($record['Id'])){
+		echo "ID is set";	
 	}
 
 
