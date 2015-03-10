@@ -39,9 +39,7 @@ function show_accounts($instance_url, $access_token) {
 	$records = $response['records'];
 	
 	
-if(isset($records["Id"])){
-	echo $records["Id"];	
-}
+
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";	
@@ -52,7 +50,9 @@ if(isset($records["Id"])){
 
     }
     echo "<br/>";
-
+if(isset($record["Id"])){
+	echo $record["Id"];	
+}
 }
 
 /*function create_account($name, $instance_url, $access_token) {
