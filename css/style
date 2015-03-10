@@ -4,6 +4,6 @@
 
 /*Custom CSS */
 
-.td {
+table, th, td {
     text-align: center;
 }
