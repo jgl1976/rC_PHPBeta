@@ -36,13 +36,16 @@ function show_accounts($instance_url, $access_token) {
 
     $total_size = $response['totalSize'];
 	
+	$records = $response['records'];
+	
+	
 
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";
 
 
-    foreach ((array) $response['records'] as $record) {
+    foreach ((array) $records as $record) {
 
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 
@@ -92,7 +95,7 @@ if ($pn == 1) {
 $limit = 'LIMIT ' .($pn - 1) * $itemsPerPage .',' .$itemsPerPage; 
 // Now we are going to run the same query as above but this time add $limit onto the end of the SQL syntax
 // $sql2 is what we will use to fuel our while loop statement below
-$sql2 = "SELECT Id from Account LIMIT 3"; 
+$sql2 = "SELECT Id from Account $limit"; 
 //////////////////////////////// END Adam's Pagination Logic ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -122,7 +125,7 @@ if ($lastPage != "1"){
 
  
 
-function create_account($name, $instance_url, $access_token) {
+/*function create_account($name, $instance_url, $access_token) {
 
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
 
@@ -337,7 +340,7 @@ function delete_account($id, $instance_url, $access_token) {
 
     curl_close($curl);
 
-}
+}*/
 
 ?>
 
@@ -356,10 +359,6 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-    <br/>
-
-        
-        <?php echo $id; ?>
 
         <tt>
 
