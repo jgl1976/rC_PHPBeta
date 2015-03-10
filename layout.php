@@ -3,7 +3,7 @@
 session_start();
 
  
-
+$paginationDisplay = ""; // Initialize the pagination output variable
 function show_accounts($instance_url, $access_token) {
 
     $query = "SELECT Name, Id, AnnualRevenue from Account";
@@ -93,7 +93,7 @@ $limit = 'LIMIT ' .($pn - 1) * $itemsPerPage .',' .$itemsPerPage;
 $sql2 = "SELECT Id from Account $limit"; 
 //////////////////////////////// END Adam's Pagination Logic ////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
-$paginationDisplay = ""; // Initialize the pagination output variable
+//$paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
@@ -358,10 +358,9 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-
-        <tt>
-
-            <?php
+<?php echo $paginationDisplay; ?>
+            
+			<?php
 
             $access_token = $_SESSION['access_token'];
 
@@ -423,11 +422,8 @@ function delete_account($id, $instance_url, $access_token) {
 
             ?>
 
-        </tt>
-        <br/>
 
-        
-        <?php echo $paginationDisplay; ?>
+
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
