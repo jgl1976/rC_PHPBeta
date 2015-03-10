@@ -49,7 +49,7 @@ function show_accounts($instance_url, $access_token) {
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
     }
     echo "<br/>";
-	echo $records.length;
+	echo count($records);
 }
 
 /*function create_account($name, $instance_url, $access_token) {
