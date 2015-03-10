@@ -51,7 +51,7 @@ function show_accounts($instance_url, $access_token) {
 
     }//////////////////////////////pagination/////////////////////////////////////////////////////////////////
 
-if (isset($_POST['$record["Id"]']) && isset($_GET['pn'])) { // Get pn from URL vars if it is present
+if (isset($record['Id']) && isset($_GET['pn'])) { // Get pn from URL vars if it is present
     $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     //$pn = ereg_replace("[^0-9]", "", $_GET['pn']); // filter everything but numbers for security(deprecated)
 } else { // If the pn URL variable is not present force it to be value of page number 1
