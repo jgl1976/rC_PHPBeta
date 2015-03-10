@@ -388,7 +388,7 @@ function delete_account($id, $instance_url, $access_token) {
 
  
 
-            $id = create_account("My New Org", $instance_url, $access_token);
+            /*$id = create_account("My New Org", $instance_url, $access_token);
 
  
 
@@ -396,7 +396,7 @@ function delete_account($id, $instance_url, $access_token) {
 
  
 
-            /*show_accounts($instance_url, $access_token);
+            show_accounts($instance_url, $access_token);
 
  
 
