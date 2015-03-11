@@ -115,7 +115,13 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		echo $paginationDisplay;
+		//echo $paginationDisplay;
+		$theNav = "<nav>
+  <ul class='pagination'>
+    <li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+    <li class='active'><a href='#'>1 <span class='sr-only'>(current)</span></a></li>
+  </ul>
+</nav>";
 		
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		
@@ -176,6 +182,12 @@ if ($lastPage != "1"){
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
 		//echo $paginationDisplay;
+		$theNav = "<nav>
+  <ul class='pagination'>
+    <li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
+    <li class='active'><a href='#'>1 <span class='sr-only'>(current)</span></a></li>
+  </ul>
+</nav>";
 		
 		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
@@ -185,15 +197,8 @@ if ($lastPage != "1"){
     }	
 	$theDiv .= "</table></div></div>";
 	}
-
-    echo "<nav>
-  <ul class='pagination'>
-    <li class='disabled'><a href='#' aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></li>
-    <li class='active'><a href='#'>1 <span class='sr-only'>(current)</span></a></li>
-    ...
-  </ul>
-</nav>
-<br/>
+	
+    echo $theNav . "<br/>
 <div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
