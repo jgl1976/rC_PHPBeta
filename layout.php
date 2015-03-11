@@ -40,7 +40,19 @@ function show_accounts($instance_url, $access_token) {
 	
 	$records = $response['records'];
 	
-	//This is where we set how many database items to show on each page 
+	
+
+    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
+    <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";	
+
+
+    foreach ((array) $records as $record) {
+		
+        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
+    }
+    echo "<br/>";
+}
+//This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 // Get the value of the last page in the pagination result set
 $lastPage = ceil($total_size / $itemsPerPage);
@@ -78,6 +90,7 @@ if ($pn == 1) {
 $limit = 'LIMIT ' .($pn - 1) * $itemsPerPage .',' .$itemsPerPage;
 	
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
+$paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
@@ -97,19 +110,6 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-
-    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";	
-
-
-    foreach ((array) $records as $record) {
-		
-        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
-    }
-    echo "<br/>";
-	
-	
-}
 
 /*function create_account($name, $instance_url, $access_token) {
 
