@@ -107,7 +107,7 @@ function show_accounts($instance_url, $access_token) {
 }
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
-$the_total_size = returnSize();
+
 // Get the value of the last page in the pagination result set
 $lastPage = ceil($the_total_size / $itemsPerPage);
 
