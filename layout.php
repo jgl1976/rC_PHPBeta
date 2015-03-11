@@ -2,6 +2,7 @@
 //comment
 session_start();
 
+ $theDiv = "";
  
 $paginationDisplay = ""; // Initialize the pagination output variable
 
@@ -50,8 +51,6 @@ function show_accounts($instance_url, $access_token) {
     	curl_close($curl);
 
     	$response = json_decode($json_response, true);
-
-    	$total_size = $response['totalSize'];
 	
 		$records = $response['records'];
 		
@@ -387,7 +386,9 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-<?php echo $paginationDisplay; ?>
+<?php echo $paginationDisplay; ?><br/>
+<?php echo $theDiv; ?>
+
             
 			<?php
 
