@@ -28,8 +28,6 @@ function show_accounts($instance_url, $access_token) {
 
     	$total_size = $response['totalSize'];
 		
-		global $total_size;
-		
 	
 	if(isset($_GET['pn'])){
 		$offset = $_GET['pn'] * 10 - 10;
@@ -102,7 +100,6 @@ function show_accounts($instance_url, $access_token) {
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
-	return $total_size;
     //echo "<br/>";
 }
 //This is where we set how many database items to show on each page 
