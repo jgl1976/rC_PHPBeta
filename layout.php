@@ -7,6 +7,28 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 
 function show_accounts($instance_url, $access_token) {
 	
+		$query = "SELECT Name, Id, AnnualRevenue FROM Account";
+		
+		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+
+    	$curl = curl_init($url);
+
+    	curl_setopt($curl, CURLOPT_HEADER, false);
+
+    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+
+        array("Authorization: OAuth $access_token"));
+
+    	$json_response = curl_exec($curl);
+
+    	curl_close($curl);
+
+    	$response = json_decode($json_response, true);
+
+    	$total_size = $response['totalSize'];
+	
 	if(isset($_GET['pn'])){
 		$offset = $_GET['pn'] * 10 - 10;
 		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
@@ -32,6 +54,8 @@ function show_accounts($instance_url, $access_token) {
     	$total_size = $response['totalSize'];
 	
 		$records = $response['records'];
+		
+		$theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -55,18 +79,19 @@ function show_accounts($instance_url, $access_token) {
 
     	$response = json_decode($json_response, true);
 
-    	$total_size = $response['totalSize'];
+    	//$total_size = $response['totalSize'];
 	
-		$records = $response['records'];	
+		$records = $response['records'];
+		foreach ((array) $records as $record) {
+		
+        $theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
+    }	
 	}
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";	
 
-    foreach ((array) $records as $record) {
-		
-        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
-    }
+    
     //echo "<br/>";
 }
 //This is where we set how many database items to show on each page 
