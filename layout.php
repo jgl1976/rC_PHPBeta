@@ -103,7 +103,7 @@ function show_accounts($instance_url, $access_token) {
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
-	
+	return $total_size;
     //echo "<br/>";
 }
 //This is where we set how many database items to show on each page 
@@ -111,7 +111,7 @@ $itemsPerPage = 10;
 
 // Get the value of the last page in the pagination result set
 $lastPage = ceil($total_size / $itemsPerPage);
-
+echo $total_size;
 // Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
 if ($pn < 1) { // If it is less than 1
     $pn = 1; // force if to be 1
