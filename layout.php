@@ -10,35 +10,57 @@ function show_accounts($instance_url, $access_token) {
 	if(isset($_GET['pn'])){
 		$offset = $_GET['pn'] * 10 - 10;
 		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
+		
+		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+
+    	$curl = curl_init($url);
+
+    	curl_setopt($curl, CURLOPT_HEADER, false);
+
+    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+
+        array("Authorization: OAuth $access_token"));
+
+    	$json_response = curl_exec($curl);
+
+    	curl_close($curl);
+
+    	$response = json_decode($json_response, true);
+
+    	$total_size = $response['totalSize'];
+	
+		$records = $response['records'];
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
-		$pn = 1;//set page number to 1	
+		$pn = 1;//set page number to 1 
+		
+		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+
+    	$curl = curl_init($url);
+
+    	curl_setopt($curl, CURLOPT_HEADER, false);
+
+    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+
+        array("Authorization: OAuth $access_token"));
+
+    	$json_response = curl_exec($curl);
+
+    	curl_close($curl);
+
+    	$response = json_decode($json_response, true);
+
+    	$total_size = $response['totalSize'];
+	
+		$records = $response['records'];	
 	}
 
-    $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
-
- 
-
-    $curl = curl_init($url);
-
-    curl_setopt($curl, CURLOPT_HEADER, false);
-
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-    curl_setopt($curl, CURLOPT_HTTPHEADER,
-
-            array("Authorization: OAuth $access_token"));
-
-    $json_response = curl_exec($curl);
-
-    curl_close($curl);
-
-    $response = json_decode($json_response, true);
-
-    $total_size = $response['totalSize'];
-	
-	$records = $response['records'];
+   
 	
 	
 
