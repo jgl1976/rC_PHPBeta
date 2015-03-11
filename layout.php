@@ -1,8 +1,6 @@
 <?php
 //comment
 session_start();
- 
-
 
 function show_accounts($instance_url, $access_token) {
 	
@@ -30,7 +28,18 @@ function show_accounts($instance_url, $access_token) {
 	
 	if(isset($_GET['pn'])){
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-		
+		//This is where we set how many database items to show on each page 
+$itemsPerPage = 10; 
+
+// Get the value of the last page in the pagination result set
+$lastPage = ceil($total_size / $itemsPerPage);
+
+// Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
+if ($pn < 1) { // If it is less than 1
+    $pn = 1; // force if to be 1
+} else if ($pn > $lastPage) { // if it is greater than $lastpage
+    $pn = $lastPage; // force it to be $lastpage's value
+} 
 		$offset = $pn * 10 - 10;
 		
 		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
@@ -55,18 +64,6 @@ function show_accounts($instance_url, $access_token) {
 	
 		$records = $response['records'];
 		
-		//This is where we set how many database items to show on each page 
-$itemsPerPage = 10; 
-
-// Get the value of the last page in the pagination result set
-$lastPage = ceil($total_size / $itemsPerPage);
-
-// Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
-if ($pn < 1) { // If it is less than 1
-    $pn = 1; // force if to be 1
-} else if ($pn > $lastPage) { // if it is greater than $lastpage
-    $pn = $lastPage; // force it to be $lastpage's value
-} 
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
 $centerPages = "";
@@ -129,6 +126,19 @@ if ($lastPage != "1"){
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
 		$pn = 1;//set page number to 1 
 		
+				//This is where we set how many database items to show on each page 
+$itemsPerPage = 10; 
+
+// Get the value of the last page in the pagination result set
+$lastPage = ceil($total_size / $itemsPerPage);
+
+// Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
+if ($pn < 1) { // If it is less than 1
+    $pn = 1; // force if to be 1
+} else if ($pn > $lastPage) { // if it is greater than $lastpage
+    $pn = $lastPage; // force it to be $lastpage's value
+} 
+		
 		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
     	$curl = curl_init($url);
@@ -151,18 +161,7 @@ if ($lastPage != "1"){
 	
 		$records = $response['records'];
 		
-		//This is where we set how many database items to show on each page 
-$itemsPerPage = 10; 
 
-// Get the value of the last page in the pagination result set
-$lastPage = ceil($total_size / $itemsPerPage);
-
-// Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
-if ($pn < 1) { // If it is less than 1
-    $pn = 1; // force if to be 1
-} else if ($pn > $lastPage) { // if it is greater than $lastpage
-    $pn = $lastPage; // force it to be $lastpage's value
-} 
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
 $centerPages = "";
