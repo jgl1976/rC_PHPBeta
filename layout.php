@@ -5,8 +5,15 @@ session_start();
  
 $paginationDisplay = ""; // Initialize the pagination output variable
 function show_accounts($instance_url, $access_token) {
-
-    $query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 5 OFFSET 0";
+	
+	$pn = $_GET['pn'];
+	$offset = $pn * 10 - 10;
+	
+	if(!isset($pn)){
+    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
+	}else{
+		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";		
+	}
 
     $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
