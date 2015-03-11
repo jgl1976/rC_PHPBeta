@@ -111,9 +111,9 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		echo $paginationDisplay;
+		//echo $paginationDisplay
 		
-		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+		$theDiv = "<br/><div class='container'>". $paginationDisplay . "<div class='table-responsive'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
 		
@@ -209,9 +209,9 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		echo $paginationDisplay;
+		//echo $paginationDisplay;
 		
-		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
+		$theDiv = "<div class='container'>". $paginationDisplay . "<div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
 		
