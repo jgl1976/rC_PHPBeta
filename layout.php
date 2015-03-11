@@ -81,6 +81,7 @@ function show_accounts($instance_url, $access_token) {
     	//$total_size = $response['totalSize'];
 	
 		$records = $response['records'];
+		
 		foreach ((array) $records as $record) {
 		
         echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
@@ -97,6 +98,7 @@ function show_accounts($instance_url, $access_token) {
 $itemsPerPage = 10; 
 // Get the value of the last page in the pagination result set
 $lastPage = ceil($total_size / $itemsPerPage);
+echo $lastPage;
 // Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
 if ($pn < 1) { // If it is less than 1
     $pn = 1; // force if to be 1
