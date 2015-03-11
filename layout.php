@@ -7,13 +7,13 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 
 function show_accounts($instance_url, $access_token) {
 	
-	if(!isset($_GET['pn'])){
-		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id";
-		$pn = 1;//set page number to 1
+	if(isset($_GET['pn'])){
+		$offset = $_GET['pn'] * 10 - 10;
+		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
 	}else{
-		$offset = $pn * 10 - 10;
-		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";		
+		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
+		$pn = 1;//set page number to 1	
 	}
 
     $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
