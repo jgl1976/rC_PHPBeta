@@ -2,7 +2,7 @@
 //comment
 session_start();
  
-$paginationDisplay = ""; // Initialize the pagination output variable
+
 
 function show_accounts($instance_url, $access_token) {
 	
@@ -30,7 +30,10 @@ function show_accounts($instance_url, $access_token) {
 		
 	
 	if(isset($_GET['pn'])){
-		$offset = $_GET['pn'] * 10 - 10;
+		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+		
+		$offset = $pn * 10 - 10;
+		
 		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
 		
 		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
@@ -53,7 +56,9 @@ function show_accounts($instance_url, $access_token) {
 	
 		$records = $response['records'];
 		
-		$theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+		echo $paginationDisplay;
+		
+		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
 		
@@ -88,6 +93,8 @@ function show_accounts($instance_url, $access_token) {
 	
 		$records = $response['records'];
 		
+		echo $paginationDisplay;
+		
 		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
@@ -100,7 +107,7 @@ function show_accounts($instance_url, $access_token) {
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
-}
+
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 
@@ -161,7 +168,7 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-
+}
 /*function create_account($name, $instance_url, $access_token) {
 
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
@@ -396,7 +403,6 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-<?php echo $paginationDisplay; ?>
 
 			<?php
 
