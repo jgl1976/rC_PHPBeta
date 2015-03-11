@@ -9,7 +9,7 @@ function show_accounts($instance_url, $access_token) {
 	
 	if(!isset($_GET['pn'])){
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
+    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id";
 		$pn = 1;//set page number to 1
 	}else{
 		$offset = $pn * 10 - 10;
