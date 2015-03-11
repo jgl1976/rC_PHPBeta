@@ -103,12 +103,13 @@ function show_accounts($instance_url, $access_token) {
 	echo $theDiv;
     
     //echo "<br/>";
-}
+
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
+
 // Get the value of the last page in the pagination result set
-$lastPage = 2;//ceil($total_size / $itemsPerPage);
-//echo $lastPage;
+$lastPage = ceil($total_size / $itemsPerPage);
+
 // Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
 if ($pn < 1) { // If it is less than 1
     $pn = 1; // force if to be 1
@@ -163,7 +164,7 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-
+}
 /*function create_account($name, $instance_url, $access_token) {
 
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
