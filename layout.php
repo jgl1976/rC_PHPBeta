@@ -54,7 +54,7 @@ function show_accounts($instance_url, $access_token) {
 	
 		$records = $response['records'];
 		
-		$theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
+		echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -83,7 +83,7 @@ function show_accounts($instance_url, $access_token) {
 		$records = $response['records'];
 		foreach ((array) $records as $record) {
 		
-        $theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
+        echo "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'><tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr></table></div></div>";
     }	
 	}
 
@@ -386,10 +386,8 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-<?php echo $paginationDisplay; ?><br/>
-<?php echo $theDiv; ?>
+<?php echo $paginationDisplay; ?>
 
-            
 			<?php
 
             $access_token = $_SESSION['access_token'];
