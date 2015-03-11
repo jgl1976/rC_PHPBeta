@@ -56,6 +56,11 @@ function show_accounts($instance_url, $access_token) {
 		
 		$theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
 		
+		foreach ((array) $records as $record) {
+		
+        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
+    }
+		
 		$theDiv .= "</table></div></div>";
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -89,10 +94,8 @@ function show_accounts($instance_url, $access_token) {
 		foreach ((array) $records as $record) {
 		
         $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
-		
-		$theDiv .= "</table></div></div>";
-		
     }	
+	$theDiv .= "</table></div></div>";
 	}
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
