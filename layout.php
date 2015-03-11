@@ -1,8 +1,6 @@
 <?php
 //comment
 session_start();
-
- $theDiv = "";
  
 $paginationDisplay = ""; // Initialize the pagination output variable
 
@@ -101,9 +99,9 @@ function show_accounts($instance_url, $access_token) {
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
-    
+    $GLOBALS['$total_size;'];
     //echo "<br/>";
-
+}
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 
@@ -164,7 +162,7 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-}
+
 /*function create_account($name, $instance_url, $access_token) {
 
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
