@@ -48,7 +48,7 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '<li class="active">&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;</li>';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
     $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 } else if ($pn == $lastPage) {
     $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
@@ -100,23 +100,22 @@ if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
-    if ($pn = 1) {
+    if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<li class="disabled">&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"> Back</a> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '<li>&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></div>';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '"> Next</a></div>';
     } 
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		//echo $paginationDisplay;
-		
+		echo $paginationDisplay;
 		
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		
@@ -162,19 +161,20 @@ if ($lastPage != "1"){
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<nav>
-  <ul class="pagination"><li>&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> ';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"> Back</a> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '<li>&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></div>';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '"> Next</a></div>';
     } 
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
+		
+		echo $paginationDisplay;
 		
 		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
@@ -184,9 +184,8 @@ if ($lastPage != "1"){
     }	
 	$theDiv .= "</table></div></div>";
 	}
-	
-    echo $paginationDisplay . "<br/>
-<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
+
+    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
 }
