@@ -3,7 +3,7 @@
 session_start();
  
 $paginationDisplay = ""; // Initialize the pagination output variable
-$total_size = "";
+$total_size = null;
 
 function show_accounts($instance_url, $access_token) {
 	
