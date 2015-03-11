@@ -111,16 +111,16 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		$theDiv = "<div align='center'>" . $paginationDisplay . "<br/>";
+		echo $paginationDisplay;
 		
-		$theDiv .= "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
 		
         $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
     }
 		
-		$theDiv .= "</table></div></div></div>";
+		$theDiv .= "</table></div></div>";
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -209,7 +209,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 		
-		$theDiv = "<div align='center'>" . $paginationDisplay . "<br/>";
+		echo $paginationDisplay;
 		
 		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
@@ -217,7 +217,7 @@ if ($lastPage != "1"){
 		
         $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
     }	
-	$theDiv .= "</table></div></div></div>";
+	$theDiv .= "</table></div></div>";
 	}
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
