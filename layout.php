@@ -87,7 +87,7 @@ function show_accounts($instance_url, $access_token) {
 	
 		$records = $response['records'];
 		
-		$theDiv = "<div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
 		
 		foreach ((array) $records as $record) {
 		
@@ -97,9 +97,9 @@ function show_accounts($instance_url, $access_token) {
 	}
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
 	echo $theDiv;
-    $GLOBALS['$total_size;'];
+    $GLOBALS['$total_size'];
     //echo "<br/>";
 }
 //This is where we set how many database items to show on each page 
