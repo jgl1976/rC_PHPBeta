@@ -57,7 +57,6 @@ function show_accounts($instance_url, $access_token) {
 		$theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
 		
 		$theDiv .= "</table></div></div>";
-		echo $theDiv;
 	}else{
 		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
     	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -92,13 +91,13 @@ function show_accounts($instance_url, $access_token) {
         $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
 		
 		$theDiv .= "</table></div></div>";
-		echo $theDiv;
+		
     }	
 	}
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>$total_size record(s) returned</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table></br>";	
-
+	echo $theDiv;
     
     //echo "<br/>";
 }
