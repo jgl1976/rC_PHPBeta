@@ -73,7 +73,7 @@ if ($lastPage != "1"){
   Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
   //If we are on page one, generate disabled previous arrow
   if($pn == 1){
-		$paginationDisplay .= '<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+		$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
   }
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
