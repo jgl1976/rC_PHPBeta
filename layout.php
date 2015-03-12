@@ -104,12 +104,12 @@ if ($lastPage != "1"){
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
-		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
+		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a><li>';
 			}
 	    }
     }
 	// Render the target page number, but without it being a link
-	$paginationDisplay .= ''.$pn.' &nbsp; ';
+	$paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
 		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
@@ -235,7 +235,7 @@ if ($lastPage != "1"){
 	    }
     }
 	// Render the target page number, but without it being a link
-	$paginationDisplay .= ''.$pn.' &nbsp; ';
+	$paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
 		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
