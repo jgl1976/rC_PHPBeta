@@ -80,7 +80,7 @@ if ($lastPage != "1"){
         $previous = $pn - 1;
         $paginationDisplay .=  '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
-		for($i = $pn-4; $i < $pn; $i++){
+		for($i = $pn-2; $i < $pn; $i++){
 			if($i > 0){
 		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a><li>';
 			}
@@ -91,7 +91,7 @@ if ($lastPage != "1"){
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
 		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
-		if($i >= $pn+4){
+		if($i >= $pn+2){
 			break;
 		}
 	}
@@ -181,7 +181,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<nav>
   <ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
-		for($i = $pn-4; $i < $pn; $i++){
+		for($i = $pn-2; $i < $pn; $i++){
 			if($i > 0){
 		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
 			}
@@ -192,7 +192,7 @@ if ($lastPage != "1"){
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
 		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
-		if($i >= $pn+4){
+		if($i >= $pn+2){
 			break;
 		}
 	}
