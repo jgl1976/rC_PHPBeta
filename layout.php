@@ -215,13 +215,13 @@ if ($lastPage != "1"){
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='33%'>".$record['rC_Giving__Is_Lifetime__c']."</td></tr>";
+        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='33%'><h3>Account</h3></td></tr></table>"; 
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='25%'><h3>ID</h3></td><td width='25%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='25%'><h3>Account</h3></td><td width='25%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
 }
 /*function create_account($name, $instance_url, $access_token) {
