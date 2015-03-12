@@ -113,7 +113,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-        echo $paginationDisplay;
+      echo "DATA<br/><br/>$paginationDisplay";
         
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
@@ -213,7 +213,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-        echo $paginationDisplay;
+        echo "DATA<br/><br/>$paginationDisplay";
         
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
@@ -462,7 +462,7 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-<?php echo $paginationDisplay;?> HIH
+
             <?php
 
             $access_token = $_SESSION['access_token'];
