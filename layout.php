@@ -95,11 +95,11 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<ul class="pagination"><li><div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; <nav>
-  <ul class="pagination"><li>';
+  <ul class="pagination">';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> ';
+        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<li><span class="paginationNumbers">' . $centerPages . '</span></li>';
@@ -196,11 +196,11 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; <nav>
-  <ul class="pagination"><li>';
+  <ul class="pagination">';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<li><span class="paginationNumbers">' . $centerPages . '</span></li>';
