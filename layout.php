@@ -119,7 +119,7 @@ if ($lastPage != "1"){
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
@@ -219,7 +219,7 @@ if ($lastPage != "1"){
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
