@@ -4,7 +4,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
     
-        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c";
+        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
@@ -42,7 +42,7 @@ if ($pn < 1) { // If it is less than 1
 } 
         $offset = $pn * 10 - 10;
         
-        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c ORDER BY Id LIMIT 10 OFFSET $offset";
+        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
@@ -94,7 +94,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination pgn"><nav>
+    $paginationDisplay .= '<div class="pagination"><nav>
   <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
@@ -112,20 +112,25 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
+      
+
+ $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
         
-      echo $paginationDisplay;
+        echo $searchBar;
+        echo $paginationDisplay;
         
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
+        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c ORDER BY Id LIMIT 10 OFFSET 0";
+        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
         
                 //This is where we set how many database items to show on each page 
@@ -194,7 +199,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination pgn"><nav>
+    $paginationDisplay .= '<div class="pagination"><nav>
   <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
@@ -212,20 +217,23 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-        
+        $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
+    
+        echo $searchBar;
         echo $paginationDisplay;
         
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='25%'>".$record['rC_Giving__Is_Lifetime__c']."</td><td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
+        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
 
-    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='25%'><h3>ID</h3></td><td width='25%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='25%'><h3>Account</h3></td><td width='25%'><h3>Edit Record</h3></td></tr></table>"; 
+    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in Account | Total Number Of Records: $total_size</h2></div></div><br/><br/>
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='25%'><h3>ID</h3></td><td width='25%'><h3>Name</h3></td><td width='25%'><h3>rC_Giving__Primary_Giving_Level__c</h3></td><td width='25%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
 }
 /*function create_account($name, $instance_url, $access_token) {
