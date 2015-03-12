@@ -113,7 +113,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-      echo "DATA<br/><br/>$paginationDisplay";
+      echo '<span class"pgn">$paginationDisplay</span>';
         
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
@@ -213,7 +213,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-        echo "DATA<br/><br/>$paginationDisplay";
+        echo '<span class"pgn">$paginationDisplay</span>';
         
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
