@@ -24,7 +24,16 @@ function show_accounts($instance_url, $access_token) {
 
         $response = json_decode($json_response, true);
 
-        $total_size = $response['totalSize'];       
+        $total_size = $response['totalSize'];  
+		
+		
+// This creates the numbers to click in between the next and back buttons
+// This section is explained well in the video that accompanies this script
+$centerPages = "";
+$sub1 = $pn - 1;
+$sub2 = $pn - 2;
+$add1 = $pn + 5;
+$add2 = $pn + 2;     
     
     if(isset($_GET['pn'])){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -64,13 +73,7 @@ if ($pn < 1) { // If it is less than 1
     
         $records = $response['records'];
         
-// This creates the numbers to click in between the next and back buttons
-// This section is explained well in the video that accompanies this script
-$centerPages = "";
-$sub1 = $pn - 1;
-$sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add5 = $pn + 5;
+
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
@@ -82,7 +85,7 @@ if ($pn == 1) {
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> </li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add5 . '">' . $add5 . '</a></li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li>';
 } else if ($pn > 1 && $pn < $lastPage) {
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
@@ -95,7 +98,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination"><nav>
-  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
+  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage;
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
@@ -171,11 +174,11 @@ if ($pn < 1) { // If it is less than 1
 
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
-$centerPages = "";
+/*$centerPages = "";
 $sub1 = $pn - 1;
 $sub2 = $pn - 2;
 $add1 = $pn + 1;
-$add2 = $pn + 2;
+$add2 = $pn + 2;*/
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
@@ -187,7 +190,7 @@ if ($pn == 1) {
     $centerPages .= '&<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
     $centerPages .= '<li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
-    $centerPages .= '<li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add5 . '">' . $add5 . '</a></li>';
+    $centerPages .= '<li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li>';
 } else if ($pn > 1 && $pn < $lastPage) {
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
