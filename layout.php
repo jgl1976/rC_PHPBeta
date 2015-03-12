@@ -32,7 +32,7 @@ function show_accounts($instance_url, $access_token) {
 $centerPages = "";
 $sub1 = $pn - 1;
 $sub2 = $pn - 2;
-$add1 = $pn + 5;
+$add1 = $pn + 1;
 $add2 = $pn + 2;     
     
     if(isset($_GET['pn'])){
