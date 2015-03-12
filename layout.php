@@ -25,14 +25,6 @@ function show_accounts($instance_url, $access_token) {
         $response = json_decode($json_response, true);
 
         $total_size = $response['totalSize'];   
-		
-// This creates the numbers to click in between the next and back buttons
-// This section is explained well in the video that accompanies this script
-$centerPages = "";
-$sub1 = $pn - 1;
-$sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add2 = $pn + 2;   
     
     if(isset($_GET['pn'])){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -72,7 +64,13 @@ if ($pn < 1) { // If it is less than 1
     
         $records = $response['records'];
 		
-//center pages         
+// This creates the numbers to click in between the next and back buttons
+// This section is explained well in the video that accompanies this script
+$centerPages = "";
+$sub1 = $pn - 1;
+$sub2 = $pn - 2;
+$add1 = $pn + 1;
+$add2 = $pn + 2;           
 
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
@@ -105,7 +103,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .= ". $centerPages . ";
+    $paginationDisplay .= "$centerPages";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
@@ -172,7 +170,13 @@ if ($pn < 1) { // If it is less than 1
         $records = $response['records'];
         
 
-//center pages
+// This creates the numbers to click in between the next and back buttons
+// This section is explained well in the video that accompanies this script
+$centerPages = "";
+$sub1 = $pn - 1;
+$sub2 = $pn - 2;
+$add1 = $pn + 1;
+$add2 = $pn + 2;
 
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
@@ -205,7 +209,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .=  ". $centerPages . ";
+    $paginationDisplay .=  "$centerPages";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
