@@ -90,7 +90,7 @@ if ($lastPage != "1"){
 		if($i >= $pn+4){
 			break;
 		}
-	}
+	
      //If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
@@ -98,11 +98,11 @@ if ($lastPage != "1"){
 </nav></div>';
     } 
 }
-
+}
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
       
 
- $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
+$searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
         
         echo $searchBar;
         
