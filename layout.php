@@ -75,7 +75,7 @@ if ($lastPage != "1"){
   if($pn == 1){
 		$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the right of the target page number
-		for($i = $pn+1; $i <= $lastPage; $i++){
+		for($i = 1; $i <= 5; $i++){
 		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
 		if($i >= $pn+4){
 			break;
