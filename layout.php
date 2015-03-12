@@ -69,8 +69,8 @@ if ($pn < 1) { // If it is less than 1
 $centerPages = "";
 $sub1 = $pn - 1;
 $sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add2 = $pn + 2;           
+$add1 = $pn + 4;
+$add2 = $pn + 4;           
 
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
@@ -175,8 +175,8 @@ if ($pn < 1) { // If it is less than 1
 $centerPages = "";
 $sub1 = $pn - 1;
 $sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add2 = $pn + 2;
+$add1 = $pn + 4;
+$add2 = $pn + 4;
 
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
