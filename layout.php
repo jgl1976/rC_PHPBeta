@@ -130,9 +130,8 @@ if ($lastPage != "1"){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
-		$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
         
-                //This is where we set how many database items to show on each page 
+//This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 
 // Get the value of the last page in the pagination result set
@@ -169,6 +168,7 @@ if ($pn < 1) { // If it is less than 1
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
+$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
