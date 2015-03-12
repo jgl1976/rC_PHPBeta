@@ -96,7 +96,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination"><nav>
-  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage;
+  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
@@ -202,7 +202,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination"><nav>
-  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
+  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
