@@ -63,33 +63,7 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
     
         $records = $response['records'];
-		
-// This creates the numbers to click in between the next and back buttons
-/* This section is explained well in the video that accompanies this script
-$centerPages = "";
-$sub1 = $pn - 1;
-$sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add2 = $pn + 2;           
-
-if ($pn == 1) {
-    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
-} else if ($pn == $lastPage) {
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
-    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
-} else if ($pn > 2 && $pn < ($lastPage - 1)) {
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
-    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> </li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li>';
-} else if ($pn > 1 && $pn < $lastPage) {
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
-    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
-    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
-}*/
-        
+		        
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
@@ -130,7 +104,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
-    if ($pagenum == $lastPage) {
+    if ($pn == $lastPage) {
         //$nextPage = null;
         $paginationCtrls .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
@@ -228,7 +202,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
-    if ($pagenum == $lastPage) {
+    if ($pn == $lastPage) {
         //$nextPage = null;
         $paginationCtrls .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
