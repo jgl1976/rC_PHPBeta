@@ -94,7 +94,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination"><nav>
+    $paginationDisplay .= '<div class="pagination pgn"><nav>
   <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
@@ -113,7 +113,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-      echo '<div class="pgn">$paginationDisplay</div>';
+      echo $paginationDisplay;
         
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
@@ -194,7 +194,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination"><nav>
+    $paginationDisplay .= '<div class="pagination pgn"><nav>
   <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
@@ -213,7 +213,7 @@ if ($lastPage != "1"){
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
         
-        echo '<div class="pgn">$paginationDisplay</div>';
+        echo $paginationDisplay;
         
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
