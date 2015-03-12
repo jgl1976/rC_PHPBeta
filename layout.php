@@ -102,7 +102,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .= '<li>' . $centerPages . '</li>';
+    $paginationDisplay .= ". $centerPages . ";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
@@ -202,7 +202,7 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .= '<li>' . $centerPages . '</li>';
+    $paginationDisplay .=  ". $centerPages . ";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
