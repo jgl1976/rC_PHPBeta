@@ -233,7 +233,8 @@ if ($lastPage != "1"){
     }
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in Account | Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='25%'><h3>ID</h3></td><td width='25%'><h3>Name</h3></td><td width='25%'><h3>rC_Giving__Primary_Giving_Level__c</h3></td><td width='25%'><h3>Edit Record</h3></td></tr></table>"; 
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='15%'><h3>ID</h3></td><td width='15%'><h3>Name</h3></td><td width='15%'><h3>Giving Primary Giving Level</h3></td>
+    <td width='15%'><h3>First Name</h3></td><td width='15%'><h3>Last Name</h3></td><td width='15%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
 }
 /*function create_account($name, $instance_url, $access_token) {
