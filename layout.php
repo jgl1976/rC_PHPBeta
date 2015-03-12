@@ -63,18 +63,44 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
     
         $records = $response['records'];
+		
+// This creates the numbers to click in between the next and back buttons
+/* This section is explained well in the video that accompanies this script
+$centerPages = "";
+$sub1 = $pn - 1;
+$sub2 = $pn - 2;
+$add1 = $pn + 1;
+$add2 = $pn + 2;           
+
+if ($pn == 1) {
+    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
+} else if ($pn == $lastPage) {
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
+    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
+} else if ($pn > 2 && $pn < ($lastPage - 1)) {
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
+    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> </li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li>';
+} else if ($pn > 1 && $pn < $lastPage) {
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li>';
+    $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
+    $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
+}*/
         
-//////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
+        //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+    $paginationDisplay .= '<div class="pagination"><nav>
+  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<nav>
-  <ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
@@ -91,17 +117,38 @@ if ($lastPage != "1"){
 			break;
 		}
 	}
-     //If we are not on the very last page we can place the Next button
+	/* This does the same as above, only checking if we are on the last page, and then generating the "Next"
+    if ($pn != $lastPage) {
+        $nextPage = $pn + 1;
+        $paginationDisplay .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$nextPage.'">Next</a> ';
+    }
+     Lay in the clickable numbers display here between the Back and Next links
+    //$paginationDisplay .= "$centerPages";
+     If we are not on the very last page we can place the Next button*/
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
 }
-//////////////////////////////pagination end/////////////////////////////////////////////////////////////////
+
+//////////////////////////////pagination/////////////////////////////////////////////////////////////////
       
 
-
+ $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
+        
+        echo $searchBar;
+        echo $paginationDisplay;
+        
+        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+        
+        foreach ((array) $records as $record) {
+        
+        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
+        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+    }
+        
+        $theDiv .= "</table></div></div>";
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -137,6 +184,8 @@ if ($pn < 1) { // If it is less than 1
         curl_close($curl);
 
         $response = json_decode($json_response, true);
+
+        //$total_size = $response['totalSize'];
     
         $records = $response['records'];
         
@@ -145,12 +194,12 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+    $paginationDisplay .= '<div class="pagination"><nav>
+  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<nav>
-  <ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
@@ -174,21 +223,6 @@ if ($lastPage != "1"){
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
-	$searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
-        
-        echo $searchBar;
-        
-        
-        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
-        
-        foreach ((array) $records as $record) {
-        
-        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
-        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
-    }
-        
-        $theDiv .= "</table></div></div><br/>";
-		echo $paginationDisplay;
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
