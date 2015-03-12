@@ -69,12 +69,16 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination"><nav>
-  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+    $paginationDisplay .= '<div class="pagination">
+  Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+  //If we are on page one, generate disabled previous arrow
+  if($pn == 1){
+		$paginationDisplay .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
+  }
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
