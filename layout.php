@@ -101,21 +101,7 @@ if ($lastPage != "1"){
 //////////////////////////////pagination end/////////////////////////////////////////////////////////////////
       
 
-$searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
-        
-        echo $searchBar;
-        
-        
-        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
-        
-        foreach ((array) $records as $record) {
-        
-        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
-        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
-    }
-        
-        $theDiv .= "</table></div></div><br/>";
-		
+
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
@@ -187,7 +173,22 @@ if ($lastPage != "1"){
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
-    } echo $paginationDisplay;
+    } 
+	$searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
+        
+        echo $searchBar;
+        
+        
+        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+        
+        foreach ((array) $records as $record) {
+        
+        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
+        <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+    }
+        
+        $theDiv .= "</table></div></div><br/>";
+		echo $paginationDisplay;
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
