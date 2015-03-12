@@ -72,21 +72,21 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 } else if ($pn == $lastPage) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a> &nbsp;';
 } else if ($pn > 1 && $pn < $lastPage) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 }
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
@@ -94,20 +94,19 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp;  <nav><ul class="pagination"> ';
+    $paginationDisplay .= '<div class="pagination"><nav>
+  <ul class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;
-  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li> ';
+        $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
+    $paginationDisplay .= '<li><span class="paginationNumbers">' . $centerPages . '</span></li>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '&nbsp;<li>  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-  </ul>
+        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
 }
@@ -173,21 +172,21 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 } else if ($pn == $lastPage) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a> &nbsp;';
 } else if ($pn > 1 && $pn < $lastPage) {
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a> &nbsp;';
+    $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 }
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
@@ -195,20 +194,19 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; <nav>
-  <ul class="pagination">';
+    $paginationDisplay .= '<div class="pagination"><nav>
+  <ul class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage. '&nbsp;  &nbsp;  &nbsp; ';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<li><span class="paginationNumbers">' . $centerPages . '</span></li>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '&nbsp;<li>  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-  </ul>
+        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
 }
