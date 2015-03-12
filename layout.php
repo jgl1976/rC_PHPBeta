@@ -222,7 +222,17 @@ if ($lastPage != "1"){
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='33%'><h3>Account</h3></td></tr></table>"; 
-    echo $theDiv;
+    
+	echo $theDiv;
+	
+	echo "<script>
+        // init bootpag
+        $('#page-selection').bootpag({
+            total: " . $lastPage . "
+        }).on('page', function(event, " . $pn . "){
+             $('#content').html('Insert content'); // some ajax content loading...
+        });
+    </script>";
 }
 /*function create_account($name, $instance_url, $access_token) {
 
@@ -451,13 +461,19 @@ function delete_account($id, $instance_url, $access_token) {
 <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>rC PHP DMA</title>
 
     </head>
 
     <body>
+    
+    <div id="content">Dynamic Content goes here</div>
+    <div id="page-selection">Pagination goes here</div>
 
             <?php
 
@@ -531,6 +547,7 @@ function delete_account($id, $instance_url, $access_token) {
     <script src="js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="js/jquery.bootpag.js"></script>
     </body>
 
 </html>
