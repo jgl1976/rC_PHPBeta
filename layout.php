@@ -24,16 +24,7 @@ function show_accounts($instance_url, $access_token) {
 
         $response = json_decode($json_response, true);
 
-        $total_size = $response['totalSize'];  
-		
-		
-// This creates the numbers to click in between the next and back buttons
-// This section is explained well in the video that accompanies this script
-$centerPages = "";
-$sub1 = $pn - 1;
-$sub2 = $pn - 2;
-$add1 = $pn + 1;
-$add2 = $pn + 2;     
+        $total_size = $response['totalSize'];      
     
     if(isset($_GET['pn'])){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -72,7 +63,14 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
     
         $records = $response['records'];
-        
+		
+// This creates the numbers to click in between the next and back buttons
+// This section is explained well in the video that accompanies this script
+$centerPages = "";
+$sub1 = $pn - 1;
+$sub2 = $pn - 2;
+$add1 = $pn + 1;
+$add2 = $pn + 2;         
 
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
@@ -174,11 +172,12 @@ if ($pn < 1) { // If it is less than 1
 
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
-/*$centerPages = "";
+$centerPages = "";
 $sub1 = $pn - 1;
 $sub2 = $pn - 2;
 $add1 = $pn + 1;
-$add2 = $pn + 2;*/
+$add2 = $pn + 2;
+
 if ($pn == 1) {
     $centerPages .= '<li class="active"><span>' . $pn . '</span></li>';
     $centerPages .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li>';
