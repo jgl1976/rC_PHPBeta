@@ -223,9 +223,8 @@ if ($lastPage != "1"){
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='33%'><h3>Account</h3></td></tr></table>"; 
     
-	echo $theDiv;
-	
-	echo "<script>
+	echo $theDiv . '<br/><div id="content">Dynamic Content goes here</div>
+    <div id="page-selection">Pagination goes here</div>' . "<script>
         // init bootpag
         $('#page-selection').bootpag({
             total: " . $lastPage . "
@@ -233,6 +232,7 @@ if ($lastPage != "1"){
              $('#content').html('Insert content'); // some ajax content loading...
         });
     </script>";
+	
 }
 /*function create_account($name, $instance_url, $access_token) {
 
@@ -472,8 +472,8 @@ function delete_account($id, $instance_url, $access_token) {
 
     <body>
     
-    <div id="content">Dynamic Content goes here</div>
-    <div id="page-selection">Pagination goes here</div>
+    
+    
 
             <?php
 
