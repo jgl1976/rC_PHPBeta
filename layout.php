@@ -3,32 +3,32 @@
 session_start();
 
 function show_accounts($instance_url, $access_token) {
-	
-		$query = "SELECT Name, Id, AnnualRevenue FROM Account";
-		
-		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+    
+        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c";
+        
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
-    	$curl = curl_init($url);
+        $curl = curl_init($url);
 
-    	curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_HEADER, false);
 
-    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
 
         array("Authorization: OAuth $access_token"));
 
-    	$json_response = curl_exec($curl);
+        $json_response = curl_exec($curl);
 
-    	curl_close($curl);
+        curl_close($curl);
 
-    	$response = json_decode($json_response, true);
+        $response = json_decode($json_response, true);
 
-    	$total_size = $response['totalSize'];		
-	
-	if(isset($_GET['pn'])){
-		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-		//This is where we set how many database items to show on each page 
+        $total_size = $response['totalSize'];       
+    
+    if(isset($_GET['pn'])){
+        $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+        //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 
 // Get the value of the last page in the pagination result set
@@ -40,30 +40,30 @@ if ($pn < 1) { // If it is less than 1
 } else if ($pn > $lastPage) { // if it is greater than $lastpage
     $pn = $lastPage; // force it to be $lastpage's value
 } 
-		$offset = $pn * 10 - 10;
-		
-		$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
-		
-		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+        $offset = $pn * 10 - 10;
+        
+        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c ORDER BY Id LIMIT 10 OFFSET $offset";
+        
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
-    	$curl = curl_init($url);
+        $curl = curl_init($url);
 
-    	curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_HEADER, false);
 
-    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
 
         array("Authorization: OAuth $access_token"));
 
-    	$json_response = curl_exec($curl);
+        $json_response = curl_exec($curl);
 
-    	curl_close($curl);
+        curl_close($curl);
 
-    	$response = json_decode($json_response, true);
-	
-		$records = $response['records'];
-		
+        $response = json_decode($json_response, true);
+    
+        $records = $response['records'];
+        
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
 $centerPages = "";
@@ -88,8 +88,8 @@ if ($pn == 1) {
     $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
     $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 }
-		
-		//////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
+        
+        //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
@@ -110,23 +110,23 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-		
-		echo $paginationDisplay;
-		
-		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
-		
-		foreach ((array) $records as $record) {
-		
-        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
+        
+        echo $paginationDisplay;
+        
+        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+        
+        foreach ((array) $records as $record) {
+        
+        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='33%'>".$record['rC_Giving__Is_Lifetime__c']."</td></tr>";
     }
-		
-		$theDiv .= "</table></div></div>";
-	}else{
-		$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-    	$query = "SELECT Name, Id, AnnualRevenue FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
-		$pn = 1;//set page number to 1 
-		
-				//This is where we set how many database items to show on each page 
+        
+        $theDiv .= "</table></div></div>";
+    }else{
+        $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+        $query = "SELECT rC_Giving__Lifetime_Amount__c, Id, rC_Giving__Is_Lifetime__c FROM rC_Giving__Summary__c ORDER BY Id LIMIT 10 OFFSET 0";
+        $pn = 1;//set page number to 1 
+        
+                //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 
 // Get the value of the last page in the pagination result set
@@ -138,29 +138,29 @@ if ($pn < 1) { // If it is less than 1
 } else if ($pn > $lastPage) { // if it is greater than $lastpage
     $pn = $lastPage; // force it to be $lastpage's value
 } 
-		
-		$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+        
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
 
-    	$curl = curl_init($url);
+        $curl = curl_init($url);
 
-    	curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_HEADER, false);
 
-    	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-    	curl_setopt($curl, CURLOPT_HTTPHEADER,
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
 
         array("Authorization: OAuth $access_token"));
 
-    	$json_response = curl_exec($curl);
+        $json_response = curl_exec($curl);
 
-    	curl_close($curl);
+        curl_close($curl);
 
-    	$response = json_decode($json_response, true);
+        $response = json_decode($json_response, true);
 
-    	//$total_size = $response['totalSize'];
-	
-		$records = $response['records'];
-		
+        //$total_size = $response['totalSize'];
+    
+        $records = $response['records'];
+        
 
 // This creates the numbers to click in between the next and back buttons
 // This section is explained well in the video that accompanies this script
@@ -186,8 +186,8 @@ if ($pn == 1) {
     $centerPages .= '&nbsp; <span class="pagNumActive">' . $pn . '</span> &nbsp;';
     $centerPages .= '&nbsp; <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a> &nbsp;';
 }
-		
-		//////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
+        
+        //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
@@ -208,21 +208,21 @@ if ($lastPage != "1"){
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-		
-		echo $paginationDisplay;
-		
-		$theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
-		
-		foreach ((array) $records as $record) {
-		
-        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['Name']."</td><td width='33%'>$".$record['AnnualRevenue']."</td></tr>";
-    }	
-	$theDiv .= "</table></div></div>";
-	}
+        
+        echo $paginationDisplay;
+        
+        $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
+        
+        foreach ((array) $records as $record) {
+        
+        $theDiv .= "<tr><td width='33%'>".$record['Id']."</td><td width='33%'>".$record['rC_Giving__Lifetime_Amount__c']."</td><td width='33%'>".$record['rC_Giving__Is_Lifetime__c']."</td></tr>";
+    }   
+    $theDiv .= "</table></div></div>";
+    }
 
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>Name</h3></td><td width='33%'><h3>AnnualRevenue</h3></td></tr></table>";	
-	echo $theDiv;
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='33%'><h3>ID</h3></td><td width='33%'><h3>rC_Giving__Lifetime_Amount__c</h3></td><td width='33%'><h3>Account</h3></td></tr></table>"; 
+    echo $theDiv;
 }
 /*function create_account($name, $instance_url, $access_token) {
 
@@ -459,7 +459,7 @@ function delete_account($id, $instance_url, $access_token) {
 
     <body>
 
-			<?php
+            <?php
 
             $access_token = $_SESSION['access_token'];
 
