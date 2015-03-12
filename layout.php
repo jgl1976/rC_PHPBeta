@@ -96,18 +96,18 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination"><nav>
-  <ul class="pagination pagination-lg">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+  <ul class="pagination pagination-lg">Page<strong>' . $pn . '</strong>of' . $lastPage . '<br/>';
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
+        $paginationDisplay .=  '<li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li>';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= ". $centerPages . ";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
 }
@@ -206,14 +206,14 @@ if ($lastPage != "1"){
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '&nbsp;  <li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
+        $paginationDisplay .=  '<li> <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"> <span aria-hidden="true">&laquo;</span></a></li> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .=  ". $centerPages . ";
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '&nbsp;  <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
     } 
 }
