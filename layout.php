@@ -462,7 +462,7 @@ function delete_account($id, $instance_url, $access_token) {
     </head>
 
     <body>
-
+<?php echo $paginationDisplay;?> HIH
             <?php
 
             $access_token = $_SESSION['access_token'];
