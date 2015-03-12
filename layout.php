@@ -104,7 +104,7 @@ if ($lastPage != "1"){
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
-		        $paginationDisplay .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
 			}
 	    }
     }
@@ -112,19 +112,19 @@ if ($lastPage != "1"){
 	$paginationDisplay .= ''.$pn.' &nbsp; ';
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
-		$paginationDisplay .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
 		if($i >= $pn+4){
 			break;
 		}
 	}
-	// This does the same as above, only checking if we are on the last page, and then generating the "Next"
+	/* This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$nextPage.'">Next</a> ';
     }
-    // Lay in the clickable numbers display here between the Back and Next links
+     Lay in the clickable numbers display here between the Back and Next links
     //$paginationDisplay .= "$centerPages";
-    // If we are not on the very last page we can place the Next button
+     If we are not on the very last page we can place the Next button*/
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
@@ -230,7 +230,7 @@ if ($lastPage != "1"){
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-4; $i < $pn; $i++){
 			if($i > 0){
-		        $paginationDisplay .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
 			}
 	    }
     }
@@ -238,20 +238,20 @@ if ($lastPage != "1"){
 	$paginationDisplay .= ''.$pn.' &nbsp; ';
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
-		$paginationDisplay .= '<a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp; ';
+		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
 		if($i >= $pn+4){
 			break;
 		}
 	}
-	// This does the same as above, only checking if we are on the last page, and then generating the "Next"
+	/* This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .= ' &nbsp; &nbsp; <a href="'.$_SERVER['PHP_SELF'].'?pn='.$nextPage.'">Next</a> ';
     } 
 	
-    // Lay in the clickable numbers display here between the Back and Next links
+     Lay in the clickable numbers display here between the Back and Next links
     //$paginationDisplay .=  "$centerPages";
-    // If we are not on the very last page we can place the Next button
+     If we are not on the very last page we can place the Next button*/
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
