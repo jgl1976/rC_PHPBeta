@@ -98,7 +98,7 @@ if ($lastPage != "1"){
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<li class="disabled"><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . ' aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"> Back</a> ';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"> Back</a> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
@@ -196,14 +196,14 @@ if ($lastPage != "1"){
     // If we are not on page 1 we can place the Back button
     if ($pn != 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<li class="disabled"><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . ' aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '"> Back</a> ';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a> ';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
     $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '"> Next</a></div>';
+        $paginationDisplay .=  '&nbsp;  <a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></div>';
     } 
 }
 
