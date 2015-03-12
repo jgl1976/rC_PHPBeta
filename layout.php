@@ -72,11 +72,11 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
+    $centerPages .= '&nbsp; <li class="active"><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 } else if ($pn == $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
+    $centerPages .= '&nbsp; <li class="active"><span>' . $pn . '</span></li> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
@@ -176,7 +176,7 @@ if ($pn == 1) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 } else if ($pn == $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
+    $centerPages .= '&nbsp; <li class="active"><span>' . $pn . '</span></li> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
