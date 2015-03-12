@@ -129,7 +129,12 @@ if ($lastPage != "1"){
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
-    } 
+    }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
+    if ($pagenum == $lastPage) {
+        //$nextPage = null;
+        $paginationCtrls .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+</nav></div>';
+    }
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
@@ -222,7 +227,12 @@ if ($lastPage != "1"){
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
-    } 
+    }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
+    if ($pagenum == $lastPage) {
+        //$nextPage = null;
+        $paginationCtrls .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+</nav></div>';
+    }
 }
 
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
