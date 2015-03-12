@@ -72,20 +72,20 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 } else if ($pn == $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li> &nbsp;';
 } else if ($pn > 1 && $pn < $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 }
         
@@ -173,20 +173,20 @@ $sub2 = $pn - 2;
 $add1 = $pn + 1;
 $add2 = $pn + 2;
 if ($pn == 1) {
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 } else if ($pn == $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
 } else if ($pn > 2 && $pn < ($lastPage - 1)) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub2 . '">' . $sub2 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add2 . '">' . $add2 . '</a></li> &nbsp;';
 } else if ($pn > 1 && $pn < $lastPage) {
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $sub1 . '">' . $sub1 . '</a></li> &nbsp;';
-    $centerPages .= '&nbsp; <span>' . $pn . '</span> &nbsp;';
+    $centerPages .= '&nbsp; <li><span>' . $pn . '</span></li> &nbsp;';
     $centerPages .= '&nbsp; <li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $add1 . '">' . $add1 . '</a></li> &nbsp;';
 }
         
@@ -203,7 +203,7 @@ if ($lastPage != "1"){
   <ul class="pagination"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     } 
     // Lay in the clickable numbers display here between the Back and Next links
-    $paginationDisplay .= '<span class="paginationNumbers">' . $centerPages . '</span>';
+    $paginationDisplay .= '<li><span class="paginationNumbers">' . $centerPages . '</span></li>';
     // If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
