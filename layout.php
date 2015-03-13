@@ -6,9 +6,9 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-//$choice = $_GET['choices'];
+$choice = $_GET['choices'];
 
-$choice = "Contact";
+//$choice = "Contact";
 
 /*if($choice == "Account"){
 	echo "You Chose Account";	
@@ -23,9 +23,9 @@ if($choice == "Account"){
 	$choice3 = "rC_Bios__Acquired_Date__c";
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
-	$choice1 = "Id";
-	$choice2 = "LastModifiedBy";
-	$choice3 = "rC_Giving__Commit_Amount__c";	
+	$choice1 = "rC_Giving__Source_Code__c";
+	$choice2 = "rC_Giving__Current_Giving_Amount__c";
+	$choice3 = "rC_Giving__Expected_Giving_Amount__c";	
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Contact"){
 	$choice1 = "Id";
