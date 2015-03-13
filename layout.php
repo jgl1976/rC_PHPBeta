@@ -124,8 +124,7 @@ if ($lastPage != "1"){
         <td width='15%'>".$record['FirstName']."</td><td width='15%'>".$record['LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
-        $theDiv .= "</table></div></div>";
-		echo $paginationDisplay;
+        $theDiv .= "</table></div></div><br/>" . $paginationDisplay;
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
