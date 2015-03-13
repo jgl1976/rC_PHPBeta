@@ -19,14 +19,17 @@ if($choice == "Account"){
 	$choice1 = "Name";
 	$choice2 = "AccountNumber";
 	$choice3 = "rC_Bios__Acquired_Date__c";
+	echo $choice . "and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "Amount";
 	$choice2 = "LastModifiedBy";
 	$choice3 = "rC_Giving__Commit_Amount__c";	
+	echo $choice . "and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Contact"){
 	$choice1 = "Account";
 	$choice2 = "Birthdate";
 	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
+	echo $choice . "and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }
 
         $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
