@@ -6,7 +6,9 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 	
-$choice = $_GET['choices'];
+//$choice = $_GET['choices'];
+
+$choice = "Opportunity";
 
 /*if($choice == "Account"){
 	echo "You Chose Account";	
@@ -126,7 +128,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
+        $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
@@ -213,7 +215,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
+        $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
