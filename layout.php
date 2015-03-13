@@ -125,6 +125,8 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
+			
+			echo $record[$choice1];
         
         $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
@@ -212,7 +214,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
-        
+        echo $record[$choice1];
         $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
