@@ -14,8 +14,16 @@ $choice = $_GET['choices'];
 	echo "You Chose Opportunity";
 }else if($choice == "Contact"){
 	echo "You Chose Contact";
-} */  
-        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM $choice";
+} */ 
+if($choice == "Account"){
+	$accountChoices = "Name, AccountNumber, rC_Bios__Acquired_Date__c";
+}else if($choice == "Opportunity"){
+	$accountChoices = "Amount, LastModifiedBy, rC_Giving__Commit_Amount__c";	
+}else if($choice == "Contact"){
+	$accountChoices = "Account, Birthdate, rC_Giving__Largest_Hard_Credit_Amount__c";
+}
+
+        $query = "SELECT $accountChoices FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
