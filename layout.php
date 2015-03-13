@@ -16,14 +16,20 @@ $choice = $_GET['choices'];
 	echo "You Chose Contact";
 } */ 
 if($choice == "Account"){
-	$accountChoices = "Name, AccountNumber, rC_Bios__Acquired_Date__c";
+	$choice1 = "Name";
+	$choice2 = "AccountNumber";
+	$choice3 = "rC_Bios__Acquired_Date__c";
 }else if($choice == "Opportunity"){
-	$accountChoices = "Amount, LastModifiedBy, rC_Giving__Commit_Amount__c";	
+	$choice1 = "Amount";
+	$choice2 = "LastModifiedBy";
+	$choice3 = "rC_Giving__Commit_Amount__c";	
 }else if($choice == "Contact"){
-	$accountChoices = "Account, Birthdate, rC_Giving__Largest_Hard_Credit_Amount__c";
+	$choice1 = "Account";
+	$choice2 = "Birthdate";
+	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
 }
 
-        $query = "SELECT $accountChoices FROM $choice";
+        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -50,7 +56,7 @@ if ($pn < 1) { // If it is less than 1
 } 
         $offset = $pn * 10 - 10;
         
-        $query = "SELECT $accountChoices FROM $choice ORDER BY Id LIMIT 10 OFFSET $offset";
+        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY Id LIMIT 10 OFFSET $offset";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -117,15 +123,15 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
-        <td width='15%'>".$record['Contacts.FirstName']."</td><td width='15%'>".$record['Contacts.LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
+        <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
 		echo $paginationDisplay;
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        $query = "SELECT SELECT $accountChoices FROM $choice ORDER BY Id LIMIT 10 OFFSET 0";
+        $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY Id LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
         
 //This is where we set how many database items to show on each page 
@@ -204,8 +210,8 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
         
-        $theDiv .= "<tr><td width='15%'>".$record['Id']."</td><td width='15%'>".$record['Name']."</td><td width='15%'>".$record['rC_Giving__Primary_Giving_Level__c']."</td>
-        <td width='15%'>".$record['Contacts.FirstName']."</td><td width='15%'>".$record['Contacts.LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
+        $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
+        <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
