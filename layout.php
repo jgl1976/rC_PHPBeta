@@ -2,10 +2,14 @@
 //comment
 session_start();
 
-$choice = $_POST['choices'];
+$choice = $_GET['choices'];
 
 if($choice == "Account"){
-	echo "<script>alert('You Chose Account');</script>";	
+	echo "You Chose Account";	
+}else if($choice == "Opportunity"){
+	echo "You Chose Opportunity";
+}else if($choice == "Contact"){
+	echo "You Chose Contact";
 }
 
 function show_accounts($instance_url, $access_token) {
@@ -95,7 +99,7 @@ if ($lastPage != "1"){
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
       
-$searchBar = '<form method="post" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"> <Option value="Opportunity">Opportunity</option> <Option value="contact">Contact</option> <Option value="Account">Account</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
+$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '?opt=" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"> <Option value="Opportunity">Opportunity</option> <Option value="contact">Contact</option> <Option value="Account">Account</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
         
         echo $searchBar;
         
@@ -182,7 +186,7 @@ if ($lastPage != "1"){
     }
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-        $searchBar = '<form name="search" method="post" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"> <Option value="Opportunity">Opportunity</option> <Option value="contact">Contact</option> <Option value="Account">Account</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
+        $searchBar = '<form name="search" method="get" action="'. $_SERVER['PHP_SELF'] . '?opt=" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"> <Option value="Opportunity">Opportunity</option> <Option value="contact">Contact</option> <Option value="Account">Account</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
     
         echo $searchBar;
         echo $paginationDisplay;
