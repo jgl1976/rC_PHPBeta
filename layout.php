@@ -50,7 +50,7 @@ if ($pn < 1) { // If it is less than 1
 } 
         $offset = $pn * 10 - 10;
         
-        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET $offset";
+        $query = "SELECT $accountChoices FROM $choice ORDER BY Id LIMIT 10 OFFSET $offset";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -125,7 +125,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		echo $paginationDisplay;
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
+        $query = "SELECT SELECT $accountChoices FROM $choice ORDER BY Id LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
         
 //This is where we set how many database items to show on each page 
