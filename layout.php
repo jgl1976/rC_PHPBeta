@@ -127,9 +127,9 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
 			
-			$choice1 = '$choice1';
-			$choice2 = '$choice2';
-			$choice3 = '$choice3';
+			$choice1 = ' . $choice1 . ';
+			$choice2 = "'$choice2'";
+			$choice3 = ".'$choice3'.";
 			
 			echo $choice1;
 			echo $choice2;
