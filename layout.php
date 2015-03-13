@@ -49,8 +49,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">
-  Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+    $paginationDisplay .= '<div class="pagination" style="text-align: center;">';
   //If we are on page one, generate disabled previous arrow
   if($pn == 1){
 		$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
@@ -79,7 +78,7 @@ if ($lastPage != "1"){
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
-</nav></div>';
+</nav>Page <strong>' . $pn . '</strong> of ' . $lastPage . '</div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn == $lastPage) {
         //$nextPage = null;
@@ -138,7 +137,7 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is ot equal to 1, if it is only 1 page we require no paginated links to display
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
-    $paginationDisplay .= '<div class="pagination">Page <strong>' . $pn . '</strong> of ' . $lastPage . '<br/>';
+    $paginationDisplay .= '<div class="pagination" style="text-align: center;">';
 	//If we're on page one but no pn var is set put the disabled arrow
 	$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     // If we are not on page 1 we can place the Back button
@@ -167,7 +166,7 @@ if ($lastPage != "1"){
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
-</nav></div>';
+</nav>Page <strong>' . $pn . '</strong> of ' . $lastPage . '</div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn == $lastPage) {
         //$nextPage = null;
