@@ -2,19 +2,20 @@
 //comment
 session_start();
 
+
+
+function show_accounts($instance_url, $access_token) {
+	
 $choice = $_GET['choices'];
 
-if($choice == "Account"){
+/*if($choice == "Account"){
 	echo "You Chose Account";	
 }else if($choice == "Opportunity"){
 	echo "You Chose Opportunity";
 }else if($choice == "Contact"){
 	echo "You Chose Contact";
-}
-
-function show_accounts($instance_url, $access_token) {
-    
-        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account";
+} */  
+        $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
