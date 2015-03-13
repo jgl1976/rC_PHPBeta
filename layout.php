@@ -175,7 +175,7 @@ if ($lastPage != "1"){
     }
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-        $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
+        $searchBar = '<form name="search" method="post" action="'. $_SERVER['PHP_SELF'] . '?ob=choices" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"> <Option value="Opportunity">Opportunity</option> <Option value="contact">Contact</option> <Option value="Account">Account</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /> </form>';
     
         echo $searchBar;
         echo $paginationDisplay;
