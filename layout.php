@@ -24,7 +24,9 @@ function show_accounts($instance_url, $access_token) {
 
         $response = json_decode($json_response, true);
 
-        $total_size = $response['totalSize'];   
+        $total_size = $response['totalSize'];  
+		
+$searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>'; 
     
     if(isset($_GET['pn'])){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -108,15 +110,9 @@ if ($lastPage != "1"){
     }
 }
 
-//////////////////////////////pagination/////////////////////////////////////////////////////////////////
-      
-
- $searchBar = '<form name="search" method="post" action="<?=$PHP_SELF?>" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select NAME="field"> <Option VALUE="fname">Object</option> <Option VALUE="lname">Field</option> <Option VALUE="info">Process</option> </Select> <input type="hidden" name="searching" value="yes" /> <input type="submit"class="btn btn-default" name="search" value="Search" /></form>';
+//////////////////////////////pagination/////////////////////////////////////////////////////////////////    
         
-        echo $searchBar;
-        
-        
-        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+        $theDiv = "$searchBar<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
         
@@ -124,7 +120,7 @@ if ($lastPage != "1"){
         <td width='15%'>".$record['Contacts.FirstName']."</td><td width='15%'>".$record['Contacts.LastName']."</td><td width='15%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
-        $theDiv .= "</table></div></div><br/>" . $paginationDisplay;
+        $theDiv .= "</table></div></div><br/>$paginationDisplay";
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
