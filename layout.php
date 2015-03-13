@@ -130,7 +130,7 @@ if ($lastPage != "1"){
         $query = "SELECT Name, Id, rC_Giving__Primary_Giving_Level__c, (SELECT LastName, FirstName FROM Contacts) FROM Account ORDER BY Id LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
         
-//This is where we set how many database items to show on each page 
+//This is where we set how many database items to show on each page  wtf
 $itemsPerPage = 10; 
 
 // Get the value of the last page in the pagination result set
