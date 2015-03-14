@@ -1,39 +1,32 @@
 <?php
 //comment
 session_start();
-
-
-
 function show_accounts($instance_url, $access_token) {
-
 //$choice = $_GET['choices'];
-
 $choice = "Contact";
-
 /*if($choice == "Account"){
-	echo "You Chose Account";	
+    echo "You Chose Account";   
 }else if($choice == "Opportunity"){
-	echo "You Chose Opportunity";
+    echo "You Chose Opportunity";
 }else if($choice == "Contact"){
-	echo "You Chose Contact";
+    echo "You Chose Contact";
 } */ 
 if($choice == "Account"){
-	$choice1 = "Id";
-	$choice2 = "AccountNumber";
-	$choice3 = "rC_Bios__Acquired_Date__c";
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
+    $choice1 = "Id";
+    $choice2 = "AccountNumber";
+    $choice3 = "rC_Bios__Acquired_Date__c";
+    echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
-	$choice1 = "rC_Giving__Source_Code__c";
-	$choice2 = "rC_Giving__Current_Giving_Amount__c";
-	$choice3 = "rC_Giving__Expected_Giving_Amount__c";	
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
+    $choice1 = "rC_Giving__Source_Code__c";
+    $choice2 = "rC_Giving__Current_Giving_Amount__c";
+    $choice3 = "rC_Giving__Expected_Giving_Amount__c";  
+    echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Contact"){
-	$choice1 = "Id";
-	$choice2 = "Birthdate";
-	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
+    $choice1 = "Id";
+    $choice2 = "Birthdate";
+    $choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
+    echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }
-
         $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
@@ -74,7 +67,7 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
     
         $records = $response['records'];
-		        
+                
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
 // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
@@ -83,28 +76,28 @@ if ($lastPage != "1"){
     $paginationDisplay .= '<div class="pagination" style="text-align: center;">';
   //If we are on page one, generate disabled previous arrow
   if($pn == 1){
-		$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
   }
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
         $paginationDisplay .=  '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-		// Render clickable number links that should appear on the left of the target page number
-		for($i = $pn-2; $i < $pn; $i++){
-			if($i > 0){
-		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a><li>';
-			}
-	    }
+        // Render clickable number links that should appear on the left of the target page number
+        for($i = $pn-2; $i < $pn; $i++){
+            if($i > 0){
+                $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a><li>';
+            }
+        }
     }
-	// Render the target page number, but without it being a link
-	$paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
-	// Render clickable number links that should appear on the right of the target page number
-	for($i = $pn+1; $i <= $lastPage; $i++){
-		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
-		if($i >= $pn+2){
-			break;
-		}
-	}
+    // Render the target page number, but without it being a link
+    $paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
+    // Render clickable number links that should appear on the right of the target page number
+    for($i = $pn+1; $i <= $lastPage; $i++){
+        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;<li>';
+        if($i >= $pn+2){
+            break;
+        }
+    }
      //If we are not on the very last page we can place the Next button*/
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
@@ -126,14 +119,13 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
-
         
         $theDiv .= "<tr><td width='25%'>".$record['"$choice1"']."</td><td width='25%'>".$record['"$choice2"']."</td><td width='25%'>".$record['"$choice3"']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
-		echo $paginationDisplay;
+        echo $paginationDisplay;
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
@@ -169,30 +161,30 @@ $paginationDisplay = ""; // Initialize the pagination output variable
 if ($lastPage != "1"){
     // This shows the user what page they are on, and the total number of pages
     $paginationDisplay .= '<div class="pagination" style="text-align: center;">';
-	//If we're on page one but no pn var is set put the disabled arrow
-	$paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+    //If we're on page one but no pn var is set put the disabled arrow
+    $paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
         $paginationDisplay .=  '<nav>
   <ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-		// Render clickable number links that should appear on the left of the target page number
-		for($i = $pn-2; $i < $pn; $i++){
-			if($i > 0){
-		        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
-			}
-	    }
+        // Render clickable number links that should appear on the left of the target page number
+        for($i = $pn-2; $i < $pn; $i++){
+            if($i > 0){
+                $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
+            }
+        }
     }
-	// Render the target page number, but without it being a link
-	$paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
-	// Render clickable number links that should appear on the right of the target page number
-	for($i = $pn+1; $i <= $lastPage; $i++){
-		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
-		if($i >= $pn+2){
-			break;
-		}
-	}
-	
+    // Render the target page number, but without it being a link
+    $paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
+    // Render clickable number links that should appear on the right of the target page number
+    for($i = $pn+1; $i <= $lastPage; $i++){
+        $paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
+        if($i >= $pn+2){
+            break;
+        }
+    }
+    
     //If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
@@ -214,7 +206,9 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
-		
+
+            echo $record['$choice1'];
+        
         $theDiv .= "<tr><td width='25%'>".$record['$choice1']."</td><td width='25%'>".$record['$choice2']."</td><td width='25%'>".$record['$choice3']."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
