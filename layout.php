@@ -73,13 +73,13 @@ if ($pn < 1) { // If it is less than 1
     
         $records = $response['records'];
 		
-		if($choice1 == ""){
+		if($choice1 == is_null){
 			$choice1 = "nothin";
 		}
-		if($choice2 == ""){
+		if($choice2 == is_null){
 			$choice2 = "nothin";
 		}
-		if($choice1 == ""){
+		if($choice1 == is_null){
 			$choice2 = "nothin";
 		}
 		        
@@ -146,13 +146,13 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
 		
-		if($choice1 == ""){
+		if($choice1 == is_null){
 			$choice1 = "nothin";
 		}
-		if($choice2 == ""){
+		if($choice2 == is_null){
 			$choice2 = "nothin";
 		}
-		if($choice1 == ""){
+		if($choice1 == is_null){
 			$choice2 = "nothin";
 		}
         
