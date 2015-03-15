@@ -6,9 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-//$choice = $_GET['choices'];
-
-$choice = "Contact";
+$choice = $_GET['choices'];
 
 /*if($choice == "Account"){
 	echo "You Chose Account";	
