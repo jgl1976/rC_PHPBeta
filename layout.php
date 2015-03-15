@@ -16,9 +16,9 @@ $choice = $_GET['choices'];
 	echo "You Chose Contact";
 } */ 
 if($choice == "Account"){
-	$choice1 = "Name";
-	$choice2 = "Phone";
-	$choice3 = "Owner";
+	$choice1 = "Id";
+	$choice2 = "AccountNumber";
+	$choice3 = "rC_Bios__Acquired_Date__c";
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "rC_Giving__Source_Code__c";
@@ -72,6 +72,16 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
     
         $records = $response['records'];
+		
+		if($choice1 == ""){
+			$choice1 = "nothin";
+		}
+		if($choice2 == ""){
+			$choice2 = "nothin";
+		}
+		if($choice1 == ""){
+			$choice2 = "nothin";
+		}
 		        
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -135,6 +145,16 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
+		
+		if($choice1 == ""){
+			$choice1 = "nothin";
+		}
+		if($choice2 == ""){
+			$choice2 = "nothin";
+		}
+		if($choice1 == ""){
+			$choice2 = "nothin";
+		}
         
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
