@@ -17,8 +17,8 @@ $choice = $_GET['choices'];
 } */ 
 if($choice == "Account"){
 	$choice1 = "Name";
-	$choice2 = "AccountNumber";
-	$choice3 = "PersonMobilePhone";
+	$choice2 = "Phone";
+	$choice3 = "Owner";
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "rC_Giving__Source_Code__c";
@@ -124,10 +124,8 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
-			
-			echo "what?";
 		
-        $theDiv .= "<tr><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
+        $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
