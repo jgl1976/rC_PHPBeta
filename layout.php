@@ -127,7 +127,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         
         foreach ((array) $records as $record) {
 
-       // echo "wtf".$record['$choice1'];
+        echo '$choice1';
 		
         $theDiv .= "<tr><td width='25%'>".$record['Id']."</td><td width='25%'>".$record["'$choice2'"]."</td><td width='25%'>".$record["'$choice3'"]."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
