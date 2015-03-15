@@ -16,9 +16,9 @@ $choice = $_GET['choices'];
 	echo "You Chose Contact";
 } */ 
 if($choice == "Account"){
-	$choice1 = "Id";
+	$choice1 = "Name";
 	$choice2 = "AccountNumber";
-	$choice3 = "rC_Bios__Acquired_Date__c";
+	$choice3 = "PersonMobilePhone";
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "rC_Giving__Source_Code__c";
