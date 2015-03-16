@@ -73,15 +73,7 @@ if ($pn < 1) { // If it is less than 1
     
         $records = $response['records'];
 		
-		if($records[$choice1] == is_null){
-			$choice1 = "nothin";
-		}
-		if($records[$choice2] == is_null){
-			$choice2 = "nothin";
-		}
-		if($records[$choice1] == is_null){
-			$choice2 = "nothin";
-		}
+		
 		        
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -134,6 +126,16 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
+			
+		if($record[$choice1] == is_null){
+			$record[$choice1] = "nothin";
+		}
+		if($record[$choice2] == is_null){
+			$record[$choice2] = "nothin";
+		}
+		if($record[$choice3] == is_null){
+			$record[$choice3] = "nothin";
+		}
 		
         $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
@@ -145,16 +147,6 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
-		
-		if($records[$choice1] == is_null){
-			$choice1 = "nothin";
-		}
-		if($records[$choice2] == is_null){
-			$choice2 = "nothin";
-		}
-		if($records[$choice1] == is_null){
-			$choice2 = "nothin";
-		}
         
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
@@ -231,6 +223,16 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $theDiv = "<div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
+			
+		if($record[$choice1] == is_null){
+			$record[$choice1] = "nothin";
+		}
+		if($record[$choice2] == is_null){
+			$record[$choice2] = "nothin";
+		}
+		if($record[$choice3] == is_null){
+			$record[$choice3] = "nothin";
+		}
 		
         $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
         <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
