@@ -6,7 +6,7 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-$choice = $_GET['choices'];
+$choice = $_GET['objectChosen'];
 
 /*if($choice == "Account"){
 	echo "You Chose Account";	
@@ -17,8 +17,8 @@ $choice = $_GET['choices'];
 } */ 
 if($choice == "Account"){
 	$choice1 = "Id";
-	$choice2 = "AccountNumber";
-	$choice3 = "rC_Bios__Acquired_Date__c";
+	$choice2 = "Phone";
+	$choice3 = "Name";
 	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "rC_Giving__Source_Code__c";
@@ -45,7 +45,7 @@ if($choice == "Account"){
         $response = json_decode($json_response, true);
         $total_size = $response['totalSize'];   
     
-    if(isset($_GET['pn'])){
+    if(isset($_GET['pn']) && ($choice)){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
@@ -73,13 +73,13 @@ if ($pn < 1) { // If it is less than 1
     
         $records = $response['records'];
 		
-		if($choice1 == is_null){
+		if($records[$choice1] == is_null){
 			$choice1 = "nothin";
 		}
-		if($choice2 == is_null){
+		if($records[$choice2] == is_null){
 			$choice2 = "nothin";
 		}
-		if($choice1 == is_null){
+		if($records[$choice1] == is_null){
 			$choice2 = "nothin";
 		}
 		        
@@ -127,7 +127,7 @@ if ($lastPage != "1"){
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
       
-$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /> <input type="submit"class="btn btn-default" value="Search" /> </form>';
+$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /> <input type="submit"class="btn btn-default" value="Search" /> </form>';
         
         echo $searchBar;
         
@@ -146,13 +146,13 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
 		
-		if($choice1 == is_null){
+		if($records[$choice1] == is_null){
 			$choice1 = "nothin";
 		}
-		if($choice2 == is_null){
+		if($records[$choice2] == is_null){
 			$choice2 = "nothin";
 		}
-		if($choice1 == is_null){
+		if($records[$choice1] == is_null){
 			$choice2 = "nothin";
 		}
         
@@ -223,7 +223,7 @@ if ($lastPage != "1"){
     }
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="choices"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /> <input type="submit"class="btn btn-default" value="Search" /> </form>';
+$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search"> Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /> <input type="submit"class="btn btn-default" value="Search" /> </form>';
     
         echo $searchBar;
         echo $paginationDisplay;
