@@ -6,7 +6,13 @@ session_start();
 
 function show_accounts($instance_url, $access_token) {
 
-$choice = $_GET['objectChosen'];
+$choice = "";
+
+if(!isset($_GET['objectChosen'])){
+	$choice = "Opportunity";
+}else{
+	$choice = $_GET['objectChosen'];	
+}
 
 /*if($choice == "Account"){
 	echo "You Chose Account";	
@@ -88,7 +94,7 @@ if ($lastPage != "1"){
     // If we are not on page 1 we can place the Back button
     if ($pn > 1) {
         $previous = $pn - 1;
-        $paginationDisplay .=  '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+        $paginationDisplay .=  '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen='.$choice.'&pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
 		// Render clickable number links that should appear on the left of the target page number
 		for($i = $pn-2; $i < $pn; $i++){
 			if($i > 0){
@@ -108,7 +114,7 @@ if ($lastPage != "1"){
      //If we are not on the very last page we can place the Next button*/
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen='.$choice.'&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav>Page <strong>' . $pn . '</strong> of ' . $lastPage . '</div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn == $lastPage) {
@@ -196,7 +202,7 @@ if ($lastPage != "1"){
 	$paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
 	// Render clickable number links that should appear on the right of the target page number
 	for($i = $pn+1; $i <= $lastPage; $i++){
-		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?pn='.$i.'">'.$i.'</a> &nbsp;</li>';
+		$paginationDisplay .= '<li><a href="'.$_SERVER['PHP_SELF'].'?objectChosen='.$choice.'&pn='.$i.'">'.$i.'</a> &nbsp;</li>';
 		if($i >= $pn+2){
 			break;
 		}
@@ -205,7 +211,7 @@ if ($lastPage != "1"){
     //If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
-        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+        $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen='.$choice.'&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav>Page <strong>' . $pn . '</strong> of ' . $lastPage . '</div>';
     }// This does the same as above, only checking if we are on the last page, and then generating the "Next"
     if ($pn == $lastPage) {
