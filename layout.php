@@ -25,17 +25,14 @@ if($choice == "Account"){
 	$choice1 = "Id";
 	$choice2 = "Phone";
 	$choice3 = "Name";
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Opportunity"){
 	$choice1 = "rC_Giving__Source_Code__c";
 	$choice2 = "rC_Giving__Current_Giving_Amount__c";
 	$choice3 = "rC_Giving__Expected_Giving_Amount__c";	
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }else if($choice == "Contact"){
 	$choice1 = "Id";
 	$choice2 = "Birthdate";
 	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
-	echo $choice . " and fields are " . $choice1 . ", " . $choice2 . ", " . $choice3 . ".";
 }
 
         $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
