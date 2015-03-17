@@ -1,10 +1,4 @@
 <?php
-//comment yeah
-session_start();
-
-function show_accounts($instance_url, $access_token) {
-
-$choice = "";
 
 if(isset($_GET['rID'])){
 	$id = $_GET['rID'];
@@ -15,8 +9,14 @@ if(isset($_GET['rID'])){
 }
 
 echo $id . ', ' . $choice2 . ', ' . $choice3;
+//comment yeah
+/*session_start();
 
-        /*$query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
+function show_accounts($instance_url, $access_token) {
+
+
+
+        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -334,8 +334,8 @@ function delete_account($id, $instance_url, $access_token) {
  
     echo "HTTP status $status deleting account<br/><br/>";
  
-    curl_close($curl);*/
-}
+    curl_close($curl);
+}*/
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -355,7 +355,7 @@ function delete_account($id, $instance_url, $access_token) {
     <body>
 
             <?php
-            $access_token = $_SESSION['access_token'];
+            /*$access_token = $_SESSION['access_token'];
             $instance_url = $_SESSION['instance_url'];
  
             if (!isset($access_token) || $access_token == "") {
