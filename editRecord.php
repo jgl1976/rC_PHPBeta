@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_GET['rID'])){
+/*if(isset($_GET['rID'])){
 	$id = $_GET['rID'];
 	$choice2 = $_GET['choice2'];
 	$choice3 = $_GET['choice3'];
@@ -10,7 +10,7 @@ if(isset($_GET['rID'])){
 
 echo $id . ', ' . $choice2 . ', ' . $choice3;
 //comment yeah
-/*session_start();
+session_start();
 
 function show_accounts($instance_url, $access_token) {
 
