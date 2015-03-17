@@ -6,12 +6,12 @@ function show_accounts($instance_url, $access_token) {
 
 $choice = "";
 
-if(!isset($_GET['rID'])){
-	header("location: layout.php");
-}else{
+if(isset($_GET['rID'])){
 	$id = $_GET['rID'];
 	$choice2 = $_GET['choice2'];
 	$choice3 = $_GET['choice3'];
+}else{
+	header("location: layout.php");
 }
 
 echo $id . ', ' . $choice2 . ', ' . $choice3;
