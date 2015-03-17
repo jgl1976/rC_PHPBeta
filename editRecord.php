@@ -2,40 +2,21 @@
 //comment yeah
 session_start();
 
-
-
 function show_accounts($instance_url, $access_token) {
 
 $choice = "";
 
-if(!isset($_GET['objectChosen'])){
-	$choice = "Opportunity";
+if(!isset($_GET['rID'])){
+	header("location: layout.php");
 }else{
-	$choice = $_GET['objectChosen'];	
+	$id = $_GET['rID'];
+	$choice2 = $_GET['choice2'];
+	$choice3 = $_GET['choice3'];
 }
 
-/*if($choice == "Account"){
-	echo "You Chose Account";	
-}else if($choice == "Opportunity"){
-	echo "You Chose Opportunity";
-}else if($choice == "Contact"){
-	echo "You Chose Contact";
-} */ 
-if($choice == "Account"){
-	$choice1 = "Id";
-	$choice2 = "Phone";
-	$choice3 = "Name";
-}else if($choice == "Opportunity"){
-	$choice1 = "Id";
-	$choice2 = "rC_Giving__Current_Giving_Amount__c";
-	$choice3 = "rC_Giving__Expected_Giving_Amount__c";	
-}else if($choice == "Contact"){
-	$choice1 = "Id";
-	$choice2 = "Birthdate";
-	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
-}
+echo $id . ', ' . $choice2 . ', ' . $choice3;
 
-        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
+        /*$query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -108,7 +89,7 @@ if ($lastPage != "1"){
 			break;
 		}
 	}
-     //If we are not on the very last page we can place the Next button*/
+     //If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen='.$choice.'&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
@@ -141,7 +122,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		}
 		
         $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
-        <td width='25%'><form method='get' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
@@ -238,7 +219,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		}
 		
         $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
-        <td width='25%'><form method='get' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        <td width='25%'><button type='button' class='btn btn-warning'>Edit Record</button></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
@@ -247,7 +228,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
     <td width='15%'><h3>First Name</h3></td><td width='15%'><h3>Last Name</h3></td><td width='15%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
 }
-/*function create_account($name, $instance_url, $access_token) {
+function create_account($name, $instance_url, $access_token) {
     $url = "$instance_url/services/data/v20.0/sobjects/Account/";
  
     $content = json_encode(array("Name" => $name));
@@ -353,8 +334,8 @@ function delete_account($id, $instance_url, $access_token) {
  
     echo "HTTP status $status deleting account<br/><br/>";
  
-    curl_close($curl);
-}*/
+    curl_close($curl);*/
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
