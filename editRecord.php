@@ -8,7 +8,9 @@ if(isset($_POST['rId'])){
 	header("location: layout.php");
 }
 
-echo "<div style='content'><form><div class='form-group'><label for='field1'>$id . '</label>,<label for='field2'> ' . $choice2 . ' </lable>,<label for='field3'> ' . $choice3 </label></div></form></div>";
+echo "<div style='content'><form><div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='choice1' placeholder='$choice1'></div>
+<div class='form-group'><label for='field2'>$choice2</lable></div>
+<div class='form-group'><label for='field3'>$choice3</label></div></form></div>";
 //comment yeah
 /*session_start();
 
