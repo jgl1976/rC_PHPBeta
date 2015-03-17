@@ -1,9 +1,9 @@
 <?php
 
-if(isset($_GET['rId'])){
-	$id = $_GET['rId'];
-	$choice2 = $_GET['choice2'];
-	$choice3 = $_GET['choice3'];
+if(isset($_POST['rId'])){
+	$id = $_POST['rId'];
+	$choice2 = $_POST['choice2'];
+	$choice3 = $_POST['choice3'];
 }else{
 	header("location: layout.php");
 }
