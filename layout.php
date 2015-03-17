@@ -238,7 +238,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		}
 		
         $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
-        <td width='25%'><form method='get' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        <td width='25%'><form name='editRecord' method='get' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
