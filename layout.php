@@ -25,9 +25,9 @@ if($choice == "Account"){
 	$choice1 = "Id";
 	$choice2 = "Phone";
 	$choice3 = "Name";
-    $choice4 = "Parent";
-    $choice5 = "IsPartner";
-    $choice6 = "ShippingAddress";
+    $choice4 = "LastViewedDate";
+    $choice5 = "Salutation";
+    $choice6 = "PersonContactId";
 }else if($choice == "Opportunity"){
 	$choice1 = "Id";
 	$choice2 = "rC_Giving__Giving_Type__c";
