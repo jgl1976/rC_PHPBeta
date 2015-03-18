@@ -1,7 +1,7 @@
 <?php
-$servername = "mysql://This:Text@WillAutomatically.UpdateOnce.DatabaseIsReady:1234/heroku_app_db";
-$username = "This";
-$password = "Text";
+$servername = "ih7lzhkhj9ckxv8y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+$username = "fdo9nglcafpld48u";
+$password = "6c3pjezu2eteduv9";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
