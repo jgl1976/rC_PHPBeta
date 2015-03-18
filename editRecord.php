@@ -4,6 +4,9 @@ if(isset($_POST['rId'])){
 	$id = $_POST['rId'];
 	$choice2 = $_POST['choice2'];
 	$choice3 = $_POST['choice3'];
+    $choice4 = $_POST['choice4'];
+    $choice5 = $_POST['choice5'];
+    $choice6 = $_POST['choice6'];
 }else{
 	header("location: layout.php");
 }
@@ -21,6 +24,9 @@ function goBack() {
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id'></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2'></div>
 <div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3'></div>
+<div class='form-group'><label for='field4'>$choice4</label><input type='text' class='form-control' id='$choice4' placeholder='$choice4'></div>
+<div class='form-group'><label for='field5'>$choice5</label><input type='text' class='form-control' id='$choice5' placeholder='$choice5'></div>
+<div class='form-group'><label for='field6'>$choice6</label><input type='text' class='form-control' id='$choice6' placeholder='$choice6'></div>
 <button type='button' class='btn btn-warning btn-lg'>Submit</button></form></div><div class='col-md-4'></div></div></div>";
 //comment yeah
 /*session_start();

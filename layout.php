@@ -25,17 +25,26 @@ if($choice == "Account"){
 	$choice1 = "Id";
 	$choice2 = "Phone";
 	$choice3 = "Name";
+    $choice4 = "Parent";
+    $choice5 = "IsPartner";
+    $choice6 = "ShippingAddress";
 }else if($choice == "Opportunity"){
 	$choice1 = "Id";
-	$choice2 = "rC_Giving__Current_Giving_Amount__c";
-	$choice3 = "rC_Giving__Expected_Giving_Amount__c";	
+	$choice2 = "rC_Giving__Giving_Type__c";
+	$choice3 = "rC_Giving__Calculated_Giving_Type__c";	
+    $choice4 = "rC_Giving__Affiliation__c";
+    $choice5 = "rC_Giving__Giving_Type_Engine__c";
+    $choice6 = "rC_Giving__Close_Date_Time__c";
 }else if($choice == "Contact"){
-	$choice1 = "Id";
-	$choice2 = "Birthdate";
-	$choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
+    $choice1 = "Id";
+    $choice2 = "Birthdate";
+    $choice3 = "rC_Giving__Largest_Hard_Credit_Amount__c";
+    $choice4 = "rC_Bios__Age__c";
+    $choice5 = "rC_Bios__Birth_Year__c";
+    $choice6 = "rC_Bios__Gender__c";
 }
 
-        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice";
+        $query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -62,7 +71,7 @@ if ($pn < 1) { // If it is less than 1
 } 
         $offset = $pn * 10 - 10;
         
-        $query = "SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
+        $query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
         
         $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
@@ -139,16 +148,26 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		if($record[$choice3] == is_null){
 			$record[$choice3] = "nothin";
 		}
+        if($record[$choice4] == is_null){
+            $record[$choice4] = "nothin";
+        }
+        if($record[$choice5] == is_null){
+            $record[$choice5] = "nothin";
+        }
+        if($record[$choice6] == is_null){
+            $record[$choice6] = "nothin";
+        }
 		
-        $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
-        <td width='25%'><form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' /><input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        $theDiv .= "<tr><td width='14%'>".$record[$choice1]."</td><td width='14%'>".$record[$choice2]."</td><td width='14%'>".$record[$choice3]."</td>
+        <td width='14%'>".$record[$choice4]."</td><td width='14%'>".$record[$choice5]."</td><td width='14%'>".$record[$choice6]."</td>
+        <td width='14%'><form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' /><input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }
         
         $theDiv .= "</table></div></div>";
 		echo $paginationDisplay;
     }else{
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        $query = "SELECT SELECT $choice1, $choice2, $choice3 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
+        $query = "SELECT SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET 0";
         $pn = 1;//set page number to 1 
         
 //This is where we set how many database items to show on each page 
@@ -236,15 +255,28 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		if($record[$choice3] == is_null){
 			$record[$choice3] = "nothin";
 		}
+        if($record[$choice4] == is_null){
+            $record[$choice4] = "nothin";
+        }
+        if($record[$choice5] == is_null){
+            $record[$choice5] = "nothin";
+        }
+        if($record[$choice6] == is_null){
+            $record[$choice6] = "nothin";
+        }
 		
-        $theDiv .= "<tr><td width='25%'>".$record[$choice1]."</td><td width='25%'>".$record[$choice2]."</td><td width='25%'>".$record[$choice3]."</td>
-        <td width='25%'><form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' /><input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        $theDiv .= "<tr><td width='14%'>".$record[$choice1]."</td><td width='14%'>".$record[$choice2]."</td><td width='14%'>".$record[$choice3]."</td>
+        <td width='14%'>".$record[$choice4]."</td><td width='14%'>".$record[$choice5]."</td><td width='14%'>".$record[$choice6]."</td>
+        <td width='14%'><form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' />
+        <input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' /><input type='hidden' name='choice4' value='$record[$choice4]' />
+        <input type='hidden' name='choice5' value='$record[$choice5]' /><input type='hidden' name='choice6' value='$record[$choice6]' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in $choice | Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='25%'><h3>$choice1</h3></td><td width='25%'><h3>$choice2</h3></td>
-    <td width='25%'><h3>$choice3</h3></td><td width='25%'><h3>Edit Record</h3></td></tr></table>"; 
+    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$choice1</h3></td><td width='14%'><h3>$choice2</h3></td>
+    <td width='14%'><h3>$choice3</h3></td><td width='14%'><h3>$choice4</h3></td><td width='14%'><h3>$choice5</h3></td>
+    <td width='14%'><h3>$choice6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
 }
 /*function create_account($name, $instance_url, $access_token) {
