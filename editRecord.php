@@ -9,7 +9,7 @@ if(isset($_POST['rId'])){
 }
 
 echo "<br><br><div style='content'><div class='row'><div class='col-md-4'></div><div class='col-md-4'><form>
-<div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$choice1'></div>
+<div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder=".$record[$choice1]."></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='Edit Field'></div>
 <div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='Edit Field'></div>
 </form></div><div class='col-md-4'></div></div></div>";
