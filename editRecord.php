@@ -8,7 +8,7 @@ if(isset($_POST['rId'])){
 	header("location: layout.php");
 }
 
-echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>".$record[$choice]."</h2></div></div><br/>
+echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data</h2></div></div><br/>
 <div class='container'><div class='row'><div class='col-md-4'>
 <button onclick='goBack()' type='button' class='btn btn-primary btn-lg'>Go Back</button>
 <script>
