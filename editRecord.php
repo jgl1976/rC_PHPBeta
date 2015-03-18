@@ -8,10 +8,10 @@ if(isset($_POST['rId'])){
 	header("location: layout.php");
 }
 
-echo "<br><br><div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table table-condensed table-hover'><tr><td>Data Here</td></tr></table></div><div class='row'><div class='col-md-4'></div><div class='col-md-4'><form>
+echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data Here</h2></div></div><br/><div class='container'><div class='row'><div class='col-md-4'></div><div class='col-md-4'><form>
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id'></div>
-<div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='Edit Field'></div>
-<div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='Edit Field'></div>
+<div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2'></div>
+<div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3'></div>
 </form></div><div class='col-md-4'></div></div></div>";
 //comment yeah
 /*session_start();
