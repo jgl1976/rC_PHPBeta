@@ -21,7 +21,7 @@ function goBack() {
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id'></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2'></div>
 <div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3'></div>
-</form></div><div class='col-md-4'></div></div></div>";
+</form></div><div class='col-md-4'><button type='button' class='btn btn-primary btn-lg'>Submit</button></div></div></div>";
 //comment yeah
 /*session_start();
 
