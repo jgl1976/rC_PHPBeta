@@ -9,7 +9,7 @@ if(isset($_POST['rId'])){
 }
 
 echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data Here</h2></div></div><br/><div class='container'><div class='row'>
-<div class='col-md-4'><button onclick='goBack()'>Go Back</button>
+<div class='col-md-4'><button onclick='goBack()' type='button' class='btn btn-primary btn-lg'>Go Back</button>
 
 <script>
 function goBack() {
