@@ -25,9 +25,9 @@ if($choice == "Account"){
 	$choice1 = "Id";
 	$choice2 = "Phone";
 	$choice3 = "Name";
-    $choice4 = "LastViewedDate";
-    $choice5 = "Salutation";
-    $choice6 = "PersonContactId";
+    $choice4 = "rC_Bios__Acquired_Date__c";
+    $choice5 = "rC_Giving__Lifetime_Hard_Credit_Amount__c";
+    $choice6 = "rC_Giving__Lifetime_Soft_Credit_Amount__c";
 }else if($choice == "Opportunity"){
 	$choice1 = "Id";
 	$choice2 = "rC_Giving__Giving_Type__c";
