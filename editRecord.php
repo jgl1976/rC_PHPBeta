@@ -8,7 +8,7 @@ if(isset($_POST['rId'])){
 	header("location: layout.php");
 }
 
-echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data</h2></div></div><br/>
+echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data Here</h2></div></div><br/>
 <div class='container'><div class='row'><div class='col-md-4'>
 <button onclick='goBack()' type='button' class='btn btn-success btn-lg'>Go Back</button>
 <script>
@@ -21,7 +21,7 @@ function goBack() {
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id'></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2'></div>
 <div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3'></div>
-<button type='button' class='btn btn-danger btn-lg'>Submit</button></form></div><div class='col-md-4'></div></div></div>";
+<button type='button' class='btn btn-warning btn-lg'>Submit</button></form></div><div class='col-md-4'></div></div></div>";
 //comment yeah
 /*session_start();
 
