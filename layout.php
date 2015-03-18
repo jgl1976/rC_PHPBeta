@@ -12,9 +12,6 @@ if(!isset($_GET['objectChosen'])){
 	$choice = "Opportunity";
 }else{
 	$choice = $_GET['objectChosen'];	
-        $choice1 = "Id";
-    $choice2 = "rC_Giving__Current_Giving_Amount__c";
-    $choice3 = "rC_Giving__Expected_Giving_Amount__c";  
 }
 
 /*if($choice == "Account"){
