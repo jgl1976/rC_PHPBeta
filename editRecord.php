@@ -8,14 +8,15 @@ if(isset($_POST['rId'])){
 	header("location: layout.php");
 }
 
-echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>Data Here</h2></div></div><br/><div class='container'><div class='row'>
-<div class='col-md-4'><button onclick='goBack()' type='button' class='btn btn-primary btn-lg'>Go Back</button>
-
+echo "<br><br><div class='container-fluid'><div class='bg-primary' align='center'><h2>$choice</h2></div></div><br/><div class='container'><div class='row'>
+<div class='col-md-4'>
+<button onclick='goBack()' type='button' class='btn btn-primary btn-lg'>Go Back</button>
 <script>
 function goBack() {
     window.history.back()
 }
-</script></div>
+</script>
+</div>
 <div class='col-md-4'><form>
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id'></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2'></div>
