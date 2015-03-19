@@ -59,7 +59,7 @@ if($choice == "Account"){
         $response = json_decode($json_response, true);
         $total_size = $response['totalSize'];   
     
-    if(isset($_GET['pn']) && ($choice)){
+    if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
