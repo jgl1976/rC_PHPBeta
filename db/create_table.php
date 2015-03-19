@@ -2,7 +2,7 @@
 $servername = "ih7lzhkhj9ckxv8y.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $username = "fdo9nglcafpld48u";
 $password = "6c3pjezu2eteduv9";
-$db_name = "DCoE";
+$dbname = "DCoE";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
