@@ -7,9 +7,11 @@ session_start();
 function show_accounts($instance_url, $access_token) {
 
 $choice = "";
+$pn = "";
 
 if(!isset($_GET['objectChosen'])){
 	$choice = "Opportunity";
+	$pn = 1;
 }else{
 	$choice = $_GET['objectChosen'];	
 }
