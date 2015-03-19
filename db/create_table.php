@@ -11,10 +11,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
 echo "Connected successfully to rC custom dataMigration DataBase!  ";
 
 // sql to create table
@@ -29,7 +25,7 @@ sF_rC_Giving__Close_Date_Time__c VARCHAR(255)
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
+    echo "Table rC_Opportunity created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }
