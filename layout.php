@@ -163,6 +163,12 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         <td width='14%'>
         <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' /><input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' />
         <input type='hidden' name='choice4' value='$record[$choice4]' /><input type='hidden' name='choice5' value='$record[$choice5]' /><input type='hidden' name='choice6' value='$record[$choice6]' />
+		<input type='hidden' name='fieldName1' value='$choice1' />
+		<input type='hidden' name='fieldName2' value='$choice2' />
+		<input type='hidden' name='fieldName3' value='$choice3' />
+		<input type='hidden' name='fieldName4' value='$choice4' />
+		<input type='hidden' name='fieldName5' value='$choice5' />
+		<input type='hidden' name='fieldName6' value='$choice6' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }
         
