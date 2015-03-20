@@ -13,6 +13,7 @@ if(isset($_POST['rId'])){
 	$fieldName4 = $_POST['fieldName4'];
 	$fieldName5 = $_POST['fieldName5'];
 	$fieldName6 = $_POST['fieldName6'];
+	$tblName = $_POST['tblName'];
 }else{
 	header("location: layout.php");
 }
@@ -40,6 +41,7 @@ function goBack() {
 		<input type='hidden' name='fieldName4' value='$fieldName4' />
 		<input type='hidden' name='fieldName5' value='$fieldName5' />
 		<input type='hidden' name='fieldName6' value='$fieldName6' />
+		<input type='hidden' name='tblName' value='$tblName' />
 <input type='submit' class='btn btn-default' value='Submit' /></form></div><div class='col-md-4'></div></div></div>";
 
 ?>

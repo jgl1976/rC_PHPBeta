@@ -169,6 +169,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		<input type='hidden' name='fieldName4' value='$choice4' />
 		<input type='hidden' name='fieldName5' value='$choice5' />
 		<input type='hidden' name='fieldName6' value='$choice6' />
+		<input type='hidden' name='tblName' value='$choice' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }
         
@@ -278,7 +279,8 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         <td width='14%'>".$record[$choice4]."</td><td width='14%'>".$record[$choice5]."</td><td width='14%'>".$record[$choice6]."</td>
         <td width='14%'><form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$record[$choice1]' />
         <input type='hidden' name='choice2' value='$record[$choice2]' /><input type='hidden' name='choice3' value='$record[$choice3]' /><input type='hidden' name='choice4' value='$record[$choice4]' />
-        <input type='hidden' name='choice5' value='$record[$choice5]' /><input type='hidden' name='choice6' value='$record[$choice6]' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+        <input type='hidden' name='choice5' value='$record[$choice5]' /><input type='hidden' name='choice6' value='$record[$choice6]' />
+		<input type='hidden' name='tblName' value='$choice' /><input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
     }   
     $theDiv .= "</table></div></div>";
     }
