@@ -27,12 +27,19 @@ function goBack() {
 </script>
 </div>
 <div class='col-md-4'><form name='theRecord' id='theRecord' action='insertRecord.php' method='post'>
-<div class='form-group'><label for='field1' name='field1' value='$fieldName1'>$fieldName1</label><input type='text' class='form-control' id='field1' placeholder='$id' name='id' value='$id'></div>
-<div class='form-group'><label for='field2' name='field2' value='$fieldName2'>$fieldName2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2' name='choice2' value='$choice2'></div>
-<div class='form-group'><label for='field3' name='field3' value='$fieldName3'>$fieldName3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3' name='choice3' value='$choice3'></div>
-<div class='form-group'><label for='field4' name='field4' value='$fieldName4'>$fieldName4</label><input type='text' class='form-control' id='$choice4' placeholder='$choice4' name='choice4' value='$choice4'></div>
-<div class='form-group'><label for='field5' name='field5' value='$fieldName5'>$fieldName5</label><input type='text' class='form-control' id='$choice5' placeholder='$choice5' name='choice5' value='$choice5'></div>
-<div class='form-group'><label for='field6' name='field6' value='$fieldName6'>$fieldName6</label><input type='text' class='form-control' id='$choice6' placeholder='$choice6' name='choice6' value='$choice6'></div>
+<div class='form-group'><label for='field1'>$fieldName1</label><input type='text' class='form-control' id='field1' placeholder='$id' name='id' value='$id'></div>
+<div class='form-group'><label for='field2'>$fieldName2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2' name='choice2' value='$choice2'></div>
+<div class='form-group'><label for='field3'>$fieldName3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3' name='choice3' value='$choice3'></div>
+<div class='form-group'><label for='field4'>$fieldName4</label><input type='text' class='form-control' id='$choice4' placeholder='$choice4' name='choice4' value='$choice4'></div>
+<div class='form-group'><label for='field5'>$fieldName5</label><input type='text' class='form-control' id='$choice5' placeholder='$choice5' name='choice5' value='$choice5'></div>
+<div class='form-group'><label for='field6'>$fieldName6</label><input type='text' class='form-control' id='$choice6' placeholder='$choice6' name='choice6' value='$choice6'></div>
+<input type='hidden' name='fieldName1' value='$choice1' />
+		<input type='hidden' name='fieldName1' value='$fieldName1' />
+		<input type='hidden' name='fieldName2' value='$fieldName2' />
+		<input type='hidden' name='fieldName3' value='$fieldName3' />
+		<input type='hidden' name='fieldName4' value='$fieldName4' />
+		<input type='hidden' name='fieldName5' value='$fieldName5' />
+		<input type='hidden' name='fieldName6' value='$fieldName6' />
 <input type='submit' class='btn btn-default' value='Submit' /></form></div><div class='col-md-4'></div></div></div>";
 
 ?>
