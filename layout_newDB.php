@@ -8,19 +8,12 @@ $choice = "";
 $pn = "";
 
 if(!isset($_GET['objectChosen'])){
-	$choice = "Opportunity";
+	$choice = "rC_Opportunity";
 	$pn = 1;
 }else{
 	$choice = $_GET['objectChosen'];	
 }
 
-/*if($choice == "Account"){
-	echo "You Chose Account";	
-}else if($choice == "Opportunity"){
-	echo "You Chose Opportunity";
-}else if($choice == "Contact"){
-	echo "You Chose Contact";
-} */ 
 if($choice == "rC_Account"){
 	$choice1 = "sF_Id";
 	$choice2 = "sF_Phone";
@@ -35,7 +28,7 @@ if($choice == "rC_Account"){
     $choice4 = "sF_rC_Giving__Affiliation__c";
     $choice5 = "sF_rC_Giving__Giving_Type_Engine__c";
     $choice6 = "sF_rC_Giving__Close_Date_Time__c";
-}else if($choice == "Contact"){
+}else if($choice == "rC_Contact"){
     $choice1 = "sF_rC_Id";
     $choice2 = "sF_Birthdate";
     $choice3 = "sF_rC_Giving__Largest_Hard_Credit_Amount__c";
