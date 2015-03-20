@@ -2,6 +2,9 @@
 //comment yeah
 session_start();
 
+
+function show_accounts($instance_url, $access_token) {
+
 include_once ("db/connect_to_mysql.php");
 
 $choice = "";
@@ -38,8 +41,9 @@ if($choice == "rC_Account"){
 }
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
+		$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
         
-        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -48,7 +52,7 @@ if($choice == "rC_Account"){
         $json_response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($json_response, true);
-        $total_size = $response['totalSize'];   
+        //$total_size = $response['totalSize'];   
     
     if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -208,7 +212,7 @@ if ($pn < 1) { // If it is less than 1
     $pn = $lastPage; // force it to be $lastpage's value
 } 
         
-        /*$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -219,7 +223,7 @@ if ($pn < 1) { // If it is less than 1
         $response = json_decode($json_response, true);
         //$total_size = $response['totalSize'];
     
-        $records = $response['records'];*/
+        //$records = $response['records'];
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -276,7 +280,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
     <td width='14%'><h3>$choice3</h3></td><td width='14%'><h3>$choice4</h3></td><td width='14%'><h3>$choice5</h3></td>
     <td width='14%'><h3>$choice6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>"; 
     echo $theDiv;
-
+}
 
 ?>
 
