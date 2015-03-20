@@ -18,11 +18,19 @@ if(isset($_POST['id'])){
 	$fieldName5 = $_POST['fieldName5'];
 	$fieldName6 = $_POST['fieldName6'];
 	
-	echo $id . ', '. $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6 . '<br/>';
-	echo $fieldName1 . ', '. $fieldName2 . ', ' . $fieldName3 . ', ' . $fieldName4 . ', ' . $fieldName5 . ', ' . $fieldName6;
+	//echo $id . ', '. $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6 . '<br/>';
+	//echo $fieldName1 . ', '. $fieldName2 . ', ' . $fieldName3 . ', ' . $fieldName4 . ', ' . $fieldName5 . ', ' . $fieldName6;
 	
 
-//$sql = "INSERT INTO $dbname ($fieldName1,$fieldName2,$fieldName3,$fieldName4,$fieldName5,$fieldName6) VALUES ($id,choice2,$choice3,$choice4,$choice5,$choice6) WHERE id='$id' LIMIT 1";
+$sql = "INSERT INTO $dbname ($fieldName1,$fieldName2,$fieldName3,$fieldName4,$fieldName5,$fieldName6) VALUES ($id,choice2,$choice3,$choice4,$choice5,$choice6) WHERE id='$id' LIMIT 1";
+
+if ($conn->query($sql) === TRUE) {
+    $msg = "New record created successfully";
+} else {
+    $msg = "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
 
 
 }
