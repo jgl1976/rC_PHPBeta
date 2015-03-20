@@ -20,14 +20,14 @@ function goBack() {
 }
 </script>
 </div>
-<div class='col-md-4'><form>
+<div class='col-md-4'><form name='theRecord' id='theRecord' action='insertRecord.php' method='post'>
 <div class='form-group'><label for='field1'>$id</label><input type='text' class='form-control' id='field1' placeholder='$id' name='id' value='$id'></div>
 <div class='form-group'><label for='field2'>$choice2</label><input type='text' class='form-control' id='$choice2' placeholder='$choice2' name='choice2' value='$choice2'></div>
 <div class='form-group'><label for='field3'>$choice3</label><input type='text' class='form-control' id='$choice3' placeholder='$choice3' name='choice3' value='$choice3'></div>
 <div class='form-group'><label for='field4'>$choice4</label><input type='text' class='form-control' id='$choice4' placeholder='$choice4' name='choice4' value='$choice4'></div>
 <div class='form-group'><label for='field5'>$choice5</label><input type='text' class='form-control' id='$choice5' placeholder='$choice5' name='choice5' value='$choice5'></div>
 <div class='form-group'><label for='field6'>$choice6</label><input type='text' class='form-control' id='$choice6' placeholder='$choice6' name='choice6' value='$choice6'></div>
-<form action='insertRecord.php' method='post'><input type='submit' class='btn btn-default' value='Submit' /></form></div><div class='col-md-4'></div></div></div>";
+<input type='submit' class='btn btn-default' value='Submit' /></form></div><div class='col-md-4'></div></div></div>";
 
 ?>
 

@@ -2,8 +2,6 @@
 //comment yeah
 session_start();
 
-
-
 function show_accounts($instance_url, $access_token) {
 
 $choice = "";
@@ -133,7 +131,7 @@ if ($lastPage != "1"){
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
       
-$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit"class="btn btn-default" value="Search" /></form>';
+$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit" class="btn btn-default" value="Search" /></form>';
         
         echo $searchBar;
         
