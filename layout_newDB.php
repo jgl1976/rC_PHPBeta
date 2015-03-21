@@ -37,7 +37,7 @@ if($choice == "rC_Account"){
     $choice6 = "sF_rC_Bios__Gender__c";
 }
 
-//echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
+echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
         
@@ -167,7 +167,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         //$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //$pn = 1;//set page number to 1
 		
-	$sqlCommand = ("SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10");	
+	$sqlCommand = ("SELECT * FROM $choice ORDER BY id LIMIT 10");	
 	$query = mysql_query($sqlCommand) or die (mysql_error());
 	$num_rows = mysql_num_rows($query);
 	
@@ -175,7 +175,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		// get all the video details
 		while($row = mysql_fetch_array($query)){ 
-			 $choice1 = $row[$choice1];
+			 $choice1 = $row['$choice1'];
 			 $choice2 = $row[$choice2];
 			 $choice3 = $row[$choice3];
 			 $choice4 = $row[$choice4];
