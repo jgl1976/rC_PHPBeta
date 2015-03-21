@@ -167,20 +167,16 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         //$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //$pn = 1;//set page number to 1
 		
-	$sql = "SELECT id FROM $choice";	
+	$sql = "SELECT * FROM $choice";	
 
-	
 	if($result = mysqli_query($db_conx, $sql)){
-		// Return the number of rows in result set
-  $rowcount = mysqli_num_rows($result);
-  //printf("Result set has %d rows.\n",$rowcount);
-
-	  while($row = mysqli_fetch_array($result, MYSQL_BOTH)){
-		  echo $row['sF_Id'];
-	  }
-	  
-  
-  // Free result set
+// Return the number of rows in result set
+	$rowcount = mysqli_num_rows($result);
+//printf("Result set has %d rows.\n",$rowcount);
+	while($row = mysqli_fetch_array($result, MYSQL_BOTH)){
+		echo $row['sF_Id'];
+	}
+// Free result set
   mysqli_free_result($result);
 	}
 	
