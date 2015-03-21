@@ -37,7 +37,7 @@ if($choice == "rC_Account"){
     $choice6 = "sF_rC_Bios__Gender__c";
 }
 
-echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
+//echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
         
@@ -167,11 +167,18 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         //$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //$pn = 1;//set page number to 1
 		
-	$sqlCommand = ("SELECT * FROM $choice");	
-	$query = mysql_query($sqlCommand) or die (mysql_error());
-	$num_rows = mysql_num_rows($query);
+	$sql = "SELECT * FROM $choice";	
 	
-	if ($num_rows > 0) {
+	
+	if($result = $query = mysqli_query($db_conx, $sql)){
+		// Return the number of rows in result set
+  $rowcount=mysqli_num_rows($result);
+  printf("Result set has %d rows.\n",$rowcount);
+  // Free result set
+  mysqli_free_result($result);
+	}
+	
+	/*if ($num_rows > 0) {
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		// get all the video details
 		while($row = mysql_fetch_array($query)){ 
@@ -186,7 +193,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		 echo $choice1 . '<br/>';
 		 echo "wtf";
 		 
-		  /*$theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
+		  $theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
         <td width='14%'>".$choice4."</td><td width='14%'>".$choice5."</td><td width='14%'>".$choice6."</td>
         <td width='14%'>
         <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' />
@@ -266,8 +273,8 @@ if ($lastPage != "1"){
         //$nextPage = null;
         $paginationDisplay .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
-    }*/
-}
+    }
+}*/
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
 /*$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit"class="btn btn-default" value="Search" /></form>';
     
@@ -299,7 +306,7 @@ if ($lastPage != "1"){
 
     <body>
 
-           <?php echo $theDiv; ?>
+           <?php //echo $theDiv; ?>
 
 
 
