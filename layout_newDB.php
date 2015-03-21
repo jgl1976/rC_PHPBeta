@@ -168,13 +168,13 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         //$pn = 1;//set page number to 1
 		
 	$sql = "SELECT id FROM $choice";	
+
 	
-	
-	if($result = $query = mysqli_query($db_conx, $sql)){
+	if($result = mysqli_query($db_conx, $sql)){
 		// Return the number of rows in result set
   $rowcount = mysqli_num_rows($result);
-  printf("Result set has %d rows.\n",$rowcount);
-  if($rowcount < 0){
+  //printf("Result set has %d rows.\n",$rowcount);
+  if($result ->$rowcount < 0){
 	  while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
 		  $firstEntry = $row[$choice1];
 	  }
