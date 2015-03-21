@@ -167,8 +167,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         //$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //$pn = 1;//set page number to 1
 		
-$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10";
-		
+	$sqlCommand = ("SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10");	
 	$query = mysql_query($sqlCommand) or die (mysql_error());
 	$num_rows = mysql_num_rows($query);
 	
@@ -201,7 +200,7 @@ $sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6
 		<input type='hidden' name='tblName' value='$choice' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
         
-        $theDiv .= "</table></div></div>";*/
+        $theDiv .= "</table></div></div>";
 	}
         
 //This is where we set how many database items to show on each page 
@@ -225,7 +224,7 @@ if ($pn < 1) { // If it is less than 1
         curl_close($curl);
         $response = json_decode($json_response, true);
         //$total_size = $response['totalSize'];   
-        $records = $response['records'];*/
+        $records = $response['records'];
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -267,10 +266,10 @@ if ($lastPage != "1"){
         //$nextPage = null;
         $paginationDisplay .= '<li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav></div>';
-    }
+    }*/
 }
 //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit"class="btn btn-default" value="Search" /></form>';
+/*$searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit"class="btn btn-default" value="Search" /></form>';
     
         echo $searchBar;
         echo $paginationDisplay;
@@ -280,7 +279,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$choice1</h3></td><td width='14%'><h3>$choice2</h3></td>
     <td width='14%'><h3>$choice3</h3></td><td width='14%'><h3>$choice4</h3></td><td width='14%'><h3>$choice5</h3></td>
     <td width='14%'><h3>$choice6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>"; 
-    //echo $theDiv;
+    //echo $theDiv;*/
 
 ?>
 
