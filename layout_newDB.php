@@ -174,7 +174,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		// Return the number of rows in result set
   $rowcount = mysqli_num_rows($result);
   //printf("Result set has %d rows.\n",$rowcount);
-  if($result ->$rowcount < 0){
+  if($result->$rowcount < 0){
 	  while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
 		  $firstEntry = $row[$choice1];
 	  }
