@@ -4,7 +4,7 @@ session_start();
 
 include_once ("db/connect_to_mysql.php");
 
-$choice = "";
+/*$choice = "";
 $pn = "";
 
 if(!isset($_GET['objectChosen'])){
@@ -12,8 +12,8 @@ if(!isset($_GET['objectChosen'])){
 	$pn = 1;
 }else{
 	$choice = $_GET['objectChosen'];	
-}
-
+}*/
+$choice = "rC_Opportunity";
 if($choice == "rC_Account"){
 	$choice1 = "sF_Id";
 	$choice2 = "sF_Phone";
