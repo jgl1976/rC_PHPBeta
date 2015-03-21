@@ -172,9 +172,9 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 	if($result = mysqli_query($db_conx, $sql)){
 // Return the number of rows in result set
 	$rowcount = mysqli_num_rows($result);
-//printf("Result set has %d rows.\n",$rowcount);
+printf("Result set has %d rows.\n",$rowcount);
 	while($row = mysqli_fetch_array($result, MYSQL_BOTH)){
-		echo $row['sF_Id'];
+		echo $row['id'];
 	}
 // Free result set
   mysqli_free_result($result);
