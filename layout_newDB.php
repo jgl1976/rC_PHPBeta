@@ -2,9 +2,6 @@
 //comment yeah
 session_start();
 
-
-function show_accounts($instance_url, $access_token) {
-
 include_once ("db/connect_to_mysql.php");
 
 $choice = "";
@@ -39,6 +36,8 @@ if($choice == "rC_Account"){
     $choice5 = "sF_rC_Bios__Birth_Year__c";
     $choice6 = "sF_rC_Bios__Gender__c";
 }
+
+echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
         
@@ -281,8 +280,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$choice1</h3></td><td width='14%'><h3>$choice2</h3></td>
     <td width='14%'><h3>$choice3</h3></td><td width='14%'><h3>$choice4</h3></td><td width='14%'><h3>$choice5</h3></td>
     <td width='14%'><h3>$choice6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>"; 
-    echo $theDiv;
-}
+    //echo $theDiv;
 
 ?>
 
