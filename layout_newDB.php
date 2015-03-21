@@ -170,7 +170,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 	$sql = "SELECT * FROM $choice";	
 	
 	
-	if($result = $query = mysqli_query($db_conx, $sql)){
+	if($result = mysqli_query($db_conx, $sql)){
 		// Return the number of rows in result set
   $row=mysqli_fetch_assoc($result);
 printf ("%s (%s)\n",$row[$choice1],$row[$choice2]);
