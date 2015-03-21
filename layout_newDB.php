@@ -37,7 +37,7 @@ if($choice == "rC_Account"){
     $choice6 = "sF_rC_Bios__Gender__c";
 }
 
-echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
+//echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $choice5 . ', ' . $choice6;
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
         
@@ -52,7 +52,7 @@ echo $choice1 . ', ' . $choice2 . ', ' . $choice3 . ', ' . $choice4 . ', ' . $ch
         $response = json_decode($json_response, true);
         $total_size = $response['totalSize'];*/
     
-if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
+/*if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
 $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
 //This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
@@ -99,10 +99,10 @@ if ($pn < 1) { // If it is less than 1
 		<input type='hidden' name='tblName' value='$choice' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
         
-        $theDiv .= "</table></div></div>";*/
+        $theDiv .= "</table></div></div>";
 	}
         
-        /*$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
+        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -112,7 +112,7 @@ if ($pn < 1) { // If it is less than 1
         curl_close($curl);
         $response = json_decode($json_response, true);
     
-        $records = $response['records'];*/	
+        $records = $response['records'];
 		        
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -144,7 +144,7 @@ if ($lastPage != "1"){
 			break;
 		}
 	}
-     //If we are not on the very last page we can place the Next button*/
+     //If we are not on the very last page we can place the Next button
     if ($pn != $lastPage) {
         $nextPage = $pn + 1;
         $paginationDisplay .=  '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen='.$choice.'&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
@@ -163,11 +163,11 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         echo $searchBar;
 		echo $paginationDisplay;
 /////////////////////////////else if pn is not set/////////////////////////////////////////////////
-    }else{
-        $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        $pn = 1;//set page number to 1
+    }else{*/
+        //$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+        //$pn = 1;//set page number to 1
 		
-		$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10 OFFSET $offset";
+$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10";
 		
 	$query = mysql_query($sqlCommand) or die (mysql_error());
 	$num_rows = mysql_num_rows($query);
@@ -275,7 +275,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         echo $searchBar;
         echo $paginationDisplay;
 
-    }
+    
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in $choice | Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$choice1</h3></td><td width='14%'><h3>$choice2</h3></td>
     <td width='14%'><h3>$choice3</h3></td><td width='14%'><h3>$choice4</h3></td><td width='14%'><h3>$choice5</h3></td>
