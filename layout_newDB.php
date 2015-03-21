@@ -179,6 +179,8 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		  $firstEntry = $row[$choice1];
 	  }
 	  echo $firstEntry;
+  }else{
+	  echo "something is wrong";
   }
   // Free result set
   mysqli_free_result($result);
