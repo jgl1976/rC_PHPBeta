@@ -175,7 +175,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
   $rowcount = mysqli_num_rows($result);
   //printf("Result set has %d rows.\n",$rowcount);
   if($rowcount > 0){
-	  while($row = mysqli_fetch_array($result)){
+	  while($row = mysqli_fetch_array($result, MYSQL_BOTH)){
 		  $firstEntry = $row['sF_Id'];
 	  }
 	  echo $firstEntry;
