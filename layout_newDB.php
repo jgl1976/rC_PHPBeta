@@ -172,8 +172,14 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 	
 	if($result = $query = mysqli_query($db_conx, $sql)){
 		// Return the number of rows in result set
-  $rowcount=mysqli_num_rows($result);
+  $rowcount = mysqli_num_rows($result);
   printf("Result set has %d rows.\n",$rowcount);
+  if($rowcount < 0){
+	  while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+		  $firstEntry = $row[$choice1];
+	  }
+	  echo $firstEntry;
+  }
   // Free result set
   mysqli_free_result($result);
 	}
