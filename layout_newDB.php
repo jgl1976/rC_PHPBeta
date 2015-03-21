@@ -170,13 +170,13 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 	$sql = "SELECT * FROM $choice";	
 	
 	
-	if($result = mysqli_query($db_conx, $sql)){
-		// Return the number of rows in result set
-  $row=mysqli_fetch_assoc($result);
-printf ("%s (%s)\n",$row[$choice1],$row[$choice2]);
+	$result = mysqli_query($db_conx, $sql);
+	// Return the number of rows in result set
+    $row = mysqli_fetch_assoc($result);
+	printf ("%s (%s)\n",$row[$choice1],$row[$choice2]);
   // Free result set
   mysqli_free_result($result);
-	}
+	
 	
 	/*if ($num_rows > 0) {
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
