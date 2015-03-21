@@ -41,9 +41,8 @@ if($choice == "rC_Account"){
 }
 
         //$query = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice";
-		$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
         
-        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
+        /*$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -52,23 +51,23 @@ if($choice == "rC_Account"){
         $json_response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($json_response, true);
-        //$total_size = $response['totalSize'];   
+        $total_size = $response['totalSize'];*/
     
-    if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
-        $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
-        //This is where we set how many database items to show on each page 
+if(isset($_GET['pn']) || ($pn = 1) && ($choice)){
+$pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+//This is where we set how many database items to show on each page 
 $itemsPerPage = 10; 
 // Get the value of the last page in the pagination result set
 $lastPage = ceil($total_size / $itemsPerPage);
 // Be sure URL variable $pn(page number) is no lower than page 1 and no higher than $lastpage
 if ($pn < 1) { // If it is less than 1
     $pn = 1; // force if to be 1
-} else if ($pn > $lastPage) { // if it is greater than $lastpage
+}else if ($pn > $lastPage) { // if it is greater than $lastpage
     $pn = $lastPage; // force it to be $lastpage's value
 } 
         $offset = $pn * 10 - 10;
         
-        $sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
+        $sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10 OFFSET $offset";
 		
 	$query = mysql_query($sqlCommand) or die (mysql_error());
 	$num_rows = mysql_num_rows($query);
@@ -77,14 +76,17 @@ if ($pn < 1) { // If it is less than 1
 		$theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
 		// get all the video details
 		while($row = mysql_fetch_array($query)){ 
-			 $choice1 = $row[$choice1];
-			 $choice2 = $row[$choice2];
-			 $choice3 = $row[$choice3];
-			 $choice4 = $row[$choice4];
-			 $choice5 = $row[$choice5];
-			 $choice6 = $row[$choice6];		 
+			 $choice1 = $row['$choice1'];
+			 $choice2 = $row['$choice2'];
+			 $choice3 = $row['$choice3'];
+			 $choice4 = $row['$choice4'];
+			 $choice5 = $row['$choice5'];
+			 $choice6 = $row['$choice6'];		 
          }
-		  $theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
+		 
+		 echo $choice1 . '<br/>';
+		 echo "wtf";
+		  /*$theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
         <td width='14%'>".$choice4."</td><td width='14%'>".$choice5."</td><td width='14%'>".$choice6."</td>
         <td width='14%'>
         <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' />
@@ -98,7 +100,7 @@ if ($pn < 1) { // If it is less than 1
 		<input type='hidden' name='tblName' value='$choice' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
         
-        $theDiv .= "</table></div></div>";
+        $theDiv .= "</table></div></div>";*/
 	}
         
         /*$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
@@ -111,9 +113,7 @@ if ($pn < 1) { // If it is less than 1
         curl_close($curl);
         $response = json_decode($json_response, true);
     
-        $records = $response['records'];*/
-		
-		
+        $records = $response['records'];*/	
 		        
 //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -168,7 +168,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
         $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         $pn = 1;//set page number to 1
 		
-		$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY $choice1 LIMIT 10 OFFSET $offset";
+		$sqlCommand = "SELECT $choice1, $choice2, $choice3, $choice4, $choice5, $choice6 FROM $choice ORDER BY id LIMIT 10 OFFSET $offset";
 		
 	$query = mysql_query($sqlCommand) or die (mysql_error());
 	$num_rows = mysql_num_rows($query);
@@ -184,7 +184,11 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 			 $choice5 = $row[$choice5];
 			 $choice6 = $row[$choice6];		 
          }
-		  $theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
+		 
+		 echo $choice1 . '<br/>';
+		 echo "wtf";
+		 
+		  /*$theDiv .= "<tr><td width='14%'>".$choice1."</td><td width='14%'>".$choice2."</td><td width='14%'>".$choice3."</td>
         <td width='14%'>".$choice4."</td><td width='14%'>".$choice5."</td><td width='14%'>".$choice6."</td>
         <td width='14%'>
         <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'><input type='hidden' name='rId' value='$choice1' /><input type='hidden' name='choice2' value='$choice2' /><input type='hidden' name='choice3' value='$choice3' />
@@ -198,7 +202,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
 		<input type='hidden' name='tblName' value='$choice' />
         <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
         
-        $theDiv .= "</table></div></div>";
+        $theDiv .= "</table></div></div>";*/
 	}
         
 //This is where we set how many database items to show on each page 
@@ -212,7 +216,7 @@ if ($pn < 1) { // If it is less than 1
     $pn = $lastPage; // force it to be $lastpage's value
 } 
         
-        $url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
+        /*$url = "$instance_url/services/data/v33.0/query?q=" . urlencode($sqlCommand);
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -221,9 +225,8 @@ if ($pn < 1) { // If it is less than 1
         $json_response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($json_response, true);
-        //$total_size = $response['totalSize'];
-    
-        //$records = $response['records'];
+        //$total_size = $response['totalSize'];   
+        $records = $response['records'];*/
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
 $paginationDisplay = ""; // Initialize the pagination output variable
@@ -272,8 +275,7 @@ $searchBar = '<form method="get" action="'. $_SERVER['PHP_SELF'] . '" class="nav
     
         echo $searchBar;
         echo $paginationDisplay;
-        
-       
+
     }
     echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in $choice | Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$choice1</h3></td><td width='14%'><h3>$choice2</h3></td>
