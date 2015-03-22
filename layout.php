@@ -42,15 +42,8 @@ function curlRequest($query, $instance_url, $access_token)
 function show_accounts($instance_url, $access_token, $object)
 {
     $pn = "";
-    
-    $field1 = "Id";
-    $field2 = "rC_Giving__Giving_Type__c";
-    $field3 = "rC_Giving__Calculated_Giving_Type__c";
-    $field4 = "rC_Giving__Affiliation__c";
-    $field5 = "rC_Giving__Giving_Type_Engine__c";
-    $field6 = "rC_Giving__Close_Date_Time__c";
 
-    /*if ($object == "Account") {
+    if ($object == "Account") {
         $field1 = "Id";
         $field2 = "Phone";
         $field3 = "Name";
@@ -71,7 +64,7 @@ function show_accounts($instance_url, $access_token, $object)
         $field4 = "rC_Bios__Age__c";
         $field5 = "rC_Bios__Birth_Year__c";
         $field6 = "rC_Bios__Gender__c";
-    }*/
+    }
     
     $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object";
 
