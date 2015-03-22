@@ -199,15 +199,27 @@ function show_accounts($instance_url, $access_token)
         }
         
         $theDiv .= "</table></div></div>";
-        echo $paginationDisplay;
    
     echo "
-    <div class='container-fluid'>
-    <div class='bg-primary' align='center'><h2>You are in $object | Total Number Of Records: $total_size</h2></div></div><br/><br/>
-    <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$field1</h3></td><td width='14%'><h3>$field2</h3></td>
-    <td width='14%'><h3>$field3</h3></td><td width='14%'><h3>$field4</h3></td><td width='14%'><h3>$field5</h3></td>
-    <td width='14%'><h3>$field6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>";
+    <div class='bg-primary' align='center'>
+    <h3>Total Number Of Records: $total_size</h3>
+    </div>
+    <br/><br/>
+    <div class='table-responsive' style='overflow: hidden;'>
+    <table class='table'>
+    <tr>
+    <td width='14%'><strong>$field1</strong></td>
+    <td width='14%'><strong>$field2</strong></td>
+    <td width='14%'><strong>$field3</strong></td>
+    <td width='14%'><strong>$field4</strong></td>
+    <td width='14%'><strong>$field5</strong></td>
+    <td width='14%'><strong>$field6</strong></td>
+    <td width='14%'><strong>Edit Record</strong></td>
+    </tr>
+    </table>";
     echo $theDiv;
+
+    echo $paginationDisplay;
 }
 
 ?>
