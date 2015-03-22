@@ -3,10 +3,24 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
-//comment yeah
 session_start();
 
-function curlResponse($query, $instance_url, $access_token)
+$access_token = $_SESSION['access_token'];
+$instance_url = $_SESSION['instance_url'];
+ 
+if (!isset($access_token) || $access_token == "") {
+    die("Error - access token missing from session!");
+    header('Location: https://php-restbeta.herokuapp.com');
+}
+ 
+if (!isset($instance_url) || $instance_url == "") {
+    die("Error - instance URL missing from session!");
+    header('Location: https://php-restbeta.herokuapp.com');
+}
+
+
+
+function curlRequest($query, $instance_url, $access_token)
 {
     $url  = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
     $curl = curl_init($url);
@@ -66,7 +80,7 @@ function show_accounts($instance_url, $access_token)
     
     $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object";
 
-    $response = curlResponse($query, $instance_url, $access_token);
+    $response = curlRequest($query, $instance_url, $access_token);
     
     $total_size = $response['totalSize'];
     
@@ -85,7 +99,7 @@ function show_accounts($instance_url, $access_token)
         
         $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object ORDER BY $field1 LIMIT $itemsPerPage OFFSET $offset";
         
-        $response = curlResponse($query, $instance_url, $access_token);
+        $response = curlRequest($query, $instance_url, $access_token);
         
 
         $records = $response['records'];
@@ -145,22 +159,22 @@ function show_accounts($instance_url, $access_token)
         foreach ((array) $records as $record) {
             
             if ($record[$field1] === null) {
-                $record[$field1] = "nothin";
+                $record[$field1] = "null";
             }
             if ($record[$field2] === null) {
-                $record[$field2] = "nothin";
+                $record[$field2] = "null";
             }
             if ($record[$field3] === null) {
-                $record[$field3] = "nothin";
+                $record[$field3] = "null";
             }
             if ($record[$field4] === null) {
-                $record[$field4] = "nothin";
+                $record[$field4] = "null";
             }
             if ($record[$field5] === null) {
-                $record[$field5] = "nothin";
+                $record[$field5] = "null";
             }
             if ($record[$field6] === null) {
-                $record[$field6] = "nothin";
+                $record[$field6] = "null";
             }
             
             $theDiv .= "<tr>
@@ -193,7 +207,9 @@ function show_accounts($instance_url, $access_token)
         $theDiv .= "</table></div></div>";
         echo $paginationDisplay;
    
-    echo "<div class='container-fluid'><div class='bg-primary' align='center'><h2>You are in $object | Total Number Of Records: $total_size</h2></div></div><br/><br/>
+    echo "
+    <div class='container-fluid'>
+    <div class='bg-primary' align='center'><h2>You are in $object | Total Number Of Records: $total_size</h2></div></div><br/><br/>
     <div class='container'><div class='table-responsive' style='overflow: hidden;'><table class='table'><tr><td width='14%'><h3>$field1</h3></td><td width='14%'><h3>$field2</h3></td>
     <td width='14%'><h3>$field3</h3></td><td width='14%'><h3>$field4</h3></td><td width='14%'><h3>$field5</h3></td>
     <td width='14%'><h3>$field6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>";
@@ -213,16 +229,7 @@ function show_accounts($instance_url, $access_token)
     </head>
     <body>
         <?php
-            $access_token = $_SESSION['access_token'];
-            $instance_url = $_SESSION['instance_url'];
- 
-            if (!isset($access_token) || $access_token == "") {
-                die("Error - access token missing from session!");
-            }
- 
-            if (!isset($instance_url) || $instance_url == "") {
-                die("Error - instance URL missing from session!");
-            }
+
 
             show_accounts($instance_url, $access_token);
         ?>
