@@ -6,7 +6,7 @@ error_reporting(-1);
 //comment yeah
 session_start();
 
-function curlResponse($query , $access_token)
+function curlResponse($query)
 {
     $url  = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
     $curl = curl_init($url);
