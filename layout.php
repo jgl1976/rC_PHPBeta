@@ -6,7 +6,7 @@ error_reporting(-1);
 //comment yeah
 session_start();
 
-function curlResponse($query)
+function curlResponse($query , $access_token)
 {
     $url  = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
     $curl = curl_init($url);
@@ -40,7 +40,7 @@ function show_accounts($instance_url, $access_token)
     }else if($object == "Contact"){
     echo "You Chose Contact";
     } */
-    $object = "Opportunity"
+    $object = "Opportunity";
     $field1 = "Id";
     $field2 = "rC_Giving__Giving_Type__c";
     $field3 = "rC_Giving__Calculated_Giving_Type__c";
@@ -73,12 +73,9 @@ function show_accounts($instance_url, $access_token)
     }*/
     
     $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object";
-        exit();
 
     $response = curlResponse($query);
     
-    print_r($response);
-
     $total_size = $response['totalSize'];
     
         $pn           = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -96,7 +93,7 @@ function show_accounts($instance_url, $access_token)
         
         $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object ORDER BY $field1 LIMIT $itemsPerPage OFFSET $offset";
         
-        $response = curlResponse($query); ////use curl function
+        $response = curlResponse($query);
         
 
         $records = $response['records'];
