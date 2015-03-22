@@ -22,9 +22,8 @@ function curlResponse($query, $instance_url, $access_token)
 
 function show_accounts($instance_url, $access_token)
 {
-    
     $object = "";
-    $pn     = "";
+    $pn = "";
     
     if (!isset($_GET['objectChosen'])) {
         $object = "Opportunity";
@@ -33,13 +32,6 @@ function show_accounts($instance_url, $access_token)
         $object = $_GET['objectChosen'];
     }
     
-    /*if($object == "Account"){
-    echo "You Chose Account";   
-    }else if($object == "Opportunity"){
-    echo "You Chose Opportunity";
-    }else if($object == "Contact"){
-    echo "You Chose Contact";
-    } */
     $object = "Opportunity";
     $field1 = "Id";
     $field2 = "rC_Giving__Giving_Type__c";
@@ -78,7 +70,7 @@ function show_accounts($instance_url, $access_token)
     
     $total_size = $response['totalSize'];
     
-        $pn           = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
+        $pn = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
         //This is where we set how many database items to show on each page 
         $itemsPerPage = 20;
         // Get the value of the last page in the pagination result set
@@ -89,7 +81,7 @@ function show_accounts($instance_url, $access_token)
         } else if ($pn > $lastPage) { // if it is greater than $lastpage
             $pn = $lastPage; // force it to be $lastpage's value
         }
-        $offset = $pn * 10 - 10;
+        $offset = $pn * $itemsPerPage - $itemsPerPage;
         
         $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object ORDER BY $field1 LIMIT $itemsPerPage OFFSET $offset";
         
@@ -98,8 +90,10 @@ function show_accounts($instance_url, $access_token)
 
         $records = $response['records'];
         
-        //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
+        /* Pagination Display Setup */
+
         $paginationDisplay = ""; // Initialize the pagination output variable
+
         // This code runs only if the last page variable is not equal to 1, if it is only 1 page we require no paginated links to display
         if ($lastPage != "1") {
             // This shows the user what page they are on, and the total number of pages
@@ -169,24 +163,31 @@ function show_accounts($instance_url, $access_token)
                 $record[$field6] = "nothin";
             }
             
-            $theDiv .= "<tr><td width='14%'>" . $record[$field1] . "</td><td width='14%'>" . $record[$field2] . "</td><td width='14%'>" . $record[$field3] . "</td>
-        <td width='14%'>" . $record[$field4] . "</td><td width='14%'>" . $record[$field5] . "</td><td width='14%'>" . $record[$field6] . "</td>
-        <td width='14%'>
-        <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'>
-        <input type='hidden' name='rId' value='$record[$field1]' />
-        <input type='hidden' name='field2' value='$record[$field2]' />
-        <input type='hidden' name='field3' value='$record[$field3]' />
-        <input type='hidden' name='field4' value='$record[$field4]' />
-        <input type='hidden' name='field5' value='$record[$field5]' />
-        <input type='hidden' name='field6' value='$record[$field6]' />
-        <input type='hidden' name='fieldName1' value='$field1' />
-        <input type='hidden' name='fieldName2' value='$field2' />
-        <input type='hidden' name='fieldName3' value='$field3' />
-        <input type='hidden' name='fieldName4' value='$field4' />
-        <input type='hidden' name='fieldName5' value='$field5' />
-        <input type='hidden' name='fieldName6' value='$field6' />
-        <input type='hidden' name='tblName' value='$object' />
-        <input type='submit' class='btn btn-warning' value='Edit Record' /></form></td></tr>";
+            $theDiv .= "<tr>
+            <td width='14%'>" . $record[$field1] . "</td>
+            <td width='14%'>" . $record[$field2] . "</td>
+            <td width='14%'>" . $record[$field3] . "</td>
+            <td width='14%'>" . $record[$field4] . "</td>
+            <td width='14%'>" . $record[$field5] . "</td>
+            <td width='14%'>" . $record[$field6] . "</td>
+            <td width='14%'>
+            <form name='editRecord' method='post' action='editRecord.php' class='navbar-form navbar-left'>
+            <input type='hidden' name='rId' value='$record[$field1]' />
+            <input type='hidden' name='field2' value='$record[$field2]' />
+            <input type='hidden' name='field3' value='$record[$field3]' />
+            <input type='hidden' name='field4' value='$record[$field4]' />
+            <input type='hidden' name='field5' value='$record[$field5]' />
+            <input type='hidden' name='field6' value='$record[$field6]' />
+            <input type='hidden' name='fieldName1' value='$field1' />
+            <input type='hidden' name='fieldName2' value='$field2' />
+            <input type='hidden' name='fieldName3' value='$field3' />
+            <input type='hidden' name='fieldName4' value='$field4' />
+            <input type='hidden' name='fieldName5' value='$field5' />
+            <input type='hidden' name='fieldName6' value='$field6' />
+            <input type='hidden' name='tblName' value='$object' />
+            <input type='submit' class='btn btn-warning' value='Edit Record' /></form>
+            </td>
+            </tr>";
         }
         
         $theDiv .= "</table></div></div>";
@@ -198,133 +199,20 @@ function show_accounts($instance_url, $access_token)
     <td width='14%'><h3>$field6</h3></td><td width='14%'><h3>Edit Record</h3></td></tr></table>";
     echo $theDiv;
 }
-/*function create_account($name, $instance_url, $access_token) {
-$url = "$instance_url/services/data/v20.0/sobjects/Account/";
 
-$content = json_encode(array("Name" => $name));
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_HEADER, false);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-array("Authorization: OAuth $access_token",
-"Content-type: application/json"));
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-$json_response = curl_exec($curl);
-
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-if ( $status != 201 ) {
-die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-}
-
-echo "HTTP status $status creating account<br/><br/>";
-
-curl_close($curl);
-
-$response = json_decode($json_response, true);
-
-$id = $response["id"];
-
-echo "New record id $id<br/><br/>";
-
-return $id;
-}
-function show_account($id, $instance_url, $access_token) {
-$url = "$instance_url/services/data/v20.0/sobjects/Account/$id";
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_HEADER, false);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-array("Authorization: OAuth $access_token"));
-
-$json_response = curl_exec($curl);
-
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-if ( $status != 200 ) {
-die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-}
-
-echo "HTTP status $status reading account<br/><br/>";
-
-curl_close($curl);
-
-$response = json_decode($json_response, true);
-foreach ((array) $response as $key => $value) {
-echo "$key:$value<br/>";
-}
-echo "<br/>";
-}
-
-function update_account($id, $new_name, $city, $instance_url, $access_token) {
-$url = "$instance_url/services/data/v20.0/sobjects/Account/$id";
-
-$content = json_encode(array("Name" => $new_name, "BillingCity" => $city));
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_HEADER, false);
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-array("Authorization: OAuth $access_token",
-"Content-type: application/json"));
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
-curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
-
-curl_exec($curl);
-
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-if ( $status != 204 ) {
-die("Error: call to URL $url failed with status $status, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-}
-
-echo "HTTP status $status updating account<br/><br/>";
-
-curl_close($curl);
-}
-
-function delete_account($id, $instance_url, $access_token) {
-$url = "$instance_url/services/data/v20.0/sobjects/Account/$id";
-
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_HEADER, false);
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-array("Authorization: OAuth $access_token"));
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
-
-curl_exec($curl);
-
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-if ( $status != 204 ) {
-die("Error: call to URL $url failed with status $status, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
-}
-
-echo "HTTP status $status deleting account<br/><br/>";
-
-curl_close($curl);
-}*/
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
-
     <head>
-<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <title>rC PHP DMA</title>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>rC PHP DMA</title>
     </head>
-
     <body>
-
-            <?php
+        <?php
             $access_token = $_SESSION['access_token'];
             $instance_url = $_SESSION['instance_url'];
  
@@ -335,30 +223,11 @@ curl_close($curl);
             if (!isset($instance_url) || $instance_url == "") {
                 die("Error - instance URL missing from session!");
             }
- 
-            show_accounts($instance_url, $access_token);
- 
-            /*$id = create_account("My New Org", $instance_url, $access_token);
- 
-            show_account($id, $instance_url, $access_token);
- 
-            show_accounts($instance_url, $access_token);
- 
-            update_account($id, "My New Org, Inc", "San Francisco",
-                    $instance_url, $access_token);
- 
-            show_account($id, $instance_url, $access_token);
- 
-            show_accounts($instance_url, $access_token);
- 
-            delete_account($id, $instance_url, $access_token);
- 
-            show_accounts($instance_url, $access_token);*/
-            ?>
 
+            show_accounts($instance_url, $access_token);
+        ?>
 
-
- <!-- Bootstrap core JavaScript
+    <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
