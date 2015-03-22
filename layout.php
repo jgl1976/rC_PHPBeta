@@ -228,7 +228,7 @@ function show_accounts($instance_url, $access_token)
     </style>
     </head>
     <body>
-   <div class="container container-fluid">
+   <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <ul class="nav nav-pills nav-stacked">
