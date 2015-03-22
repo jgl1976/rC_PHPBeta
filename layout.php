@@ -73,11 +73,11 @@ function show_accounts($instance_url, $access_token)
     }*/
     
     $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object";
-    
+        exit();
+
     $response = curlResponse($query);
     
     print_r($response);
-    exit();
 
     $total_size = $response['totalSize'];
     
