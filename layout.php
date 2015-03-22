@@ -148,7 +148,7 @@ function show_accounts($instance_url, $access_token)
         }
         //////////////////////////////pagination/////////////////////////////////////////////////////////////////
                         
-        $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
+        $theDiv = "<br/><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
             
@@ -198,7 +198,7 @@ function show_accounts($instance_url, $access_token)
             </tr>";
         }
         
-        $theDiv .= "</table></div></div>";
+        $theDiv .= "</table></div>";
    
     echo "
     <div class='bg-primary' align='center'>
