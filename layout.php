@@ -8,6 +8,7 @@ session_start();
 $access_token = $_SESSION['access_token'];
 $instance_url = $_SESSION['instance_url'];
 
+$pn = "";
 
 if (!isset($_GET['objectChosen'])) {
     $object = "Opportunity";
@@ -230,7 +231,7 @@ function show_accounts($instance_url, $access_token)
     <body>
    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Opportunity</a></li>
                     <li><a href=""><i class="fa fa-file-o fa-fw"></i>Contact</a></li>
@@ -238,14 +239,14 @@ function show_accounts($instance_url, $access_token)
                     <li><a href=""><i class="fa fa-table fa-fw"></i>Logout</a></li>
                 </ul>
             </div>
-            <div class="col-md-9 well">
+            <div class="col-md-10 well">
                 <form method="get" action="' . $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">
                     Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/>
                     <input type="hidden" name="pn" value="1" />
                     <input type="submit" class="btn btn-default" value="Search" />
                 </form>            
             </div>
-            <div class="col-md-9 well">
+            <div class="col-md-10 well">
                 <?php show_accounts($instance_url, $access_token); ?>
             </div>
         </div>
