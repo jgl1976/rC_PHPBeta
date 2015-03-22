@@ -245,8 +245,6 @@ function show_accounts($instance_url, $access_token)
                     <input type="submit" class="btn btn-default" value="Search" />
                 </form>            
             </div>
-        </div>
-        <div class="row">
             <div class="col-md-9 well">
                 <?php show_accounts($instance_url, $access_token); ?>
             </div>
