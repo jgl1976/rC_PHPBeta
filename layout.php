@@ -91,6 +91,8 @@ function show_accounts($instance_url, $access_token)
         
         $response = curlResponse($query); ////use curl function
         
+        print_r($response);
+
         $records = $response['records'];
         
         //////Adam's Pagination Display Setup /////////////////////////////////////////////////////////////////////
