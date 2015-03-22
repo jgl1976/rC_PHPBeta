@@ -144,22 +144,22 @@ function show_accounts($instance_url, $access_token)
         
         foreach ((array) $records as $record) {
             
-            if ($record[$field1] == is_null) {
+            if ($record[$field1] === null) {
                 $record[$field1] = "nothin";
             }
-            if ($record[$field2] == is_null) {
+            if ($record[$field2] === null) {
                 $record[$field2] = "nothin";
             }
-            if ($record[$field3] == is_null) {
+            if ($record[$field3] === null) {
                 $record[$field3] = "nothin";
             }
-            if ($record[$field4] == is_null) {
+            if ($record[$field4] === null) {
                 $record[$field4] = "nothin";
             }
-            if ($record[$field5] == is_null) {
+            if ($record[$field5] === null) {
                 $record[$field5] = "nothin";
             }
-            if ($record[$field6] == is_null) {
+            if ($record[$field6] === null) {
                 $record[$field6] = "nothin";
             }
             
