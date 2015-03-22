@@ -72,6 +72,9 @@ function show_accounts($instance_url, $access_token)
     
     $response = curlResponse($query);
     
+    print_r($response);
+    exit();
+
     $total_size = $response['totalSize'];
     
         $pn           = preg_replace('#[^0-9]#i', '', $_GET['pn']); // filter everything but numbers for security(new)
@@ -91,7 +94,6 @@ function show_accounts($instance_url, $access_token)
         
         $response = curlResponse($query); ////use curl function
         
-        print_r($response);
 
         $records = $response['records'];
         
