@@ -8,15 +8,15 @@ $instance_url = $_SESSION['instance_url'];
 
 $pn = "";
 
-if (!isset($_GET['objectChosen'])) {
+if (!isset($_GET['object'])) {
     $object = "Opportunity";
     $pn     = 1;
 } else {
-    $object = $_GET['objectChosen'];
+    $object = $_GET['object'];
 }
  
 if (!isset($access_token) || $access_token == "") {
-    flash('error', 'Access token missing' );
+    flash('error', 'Access Token Missing Login Below!' );
     header('Location: https://php-restbeta.herokuapp.com');
 }
  
@@ -39,19 +39,16 @@ function curlRequest($query, $instance_url, $access_token)
     return json_decode($json_response, true);
 }
 
-function show_accounts($instance_url, $access_token)
+function show_accounts($instance_url, $access_token, $object)
 {
-    $object = "";
     $pn = "";
     
-    $object = "Opportunity";
     $field1 = "Id";
     $field2 = "rC_Giving__Giving_Type__c";
     $field3 = "rC_Giving__Calculated_Giving_Type__c";
     $field4 = "rC_Giving__Affiliation__c";
     $field5 = "rC_Giving__Giving_Type_Engine__c";
     $field6 = "rC_Giving__Close_Date_Time__c";
-    
 
     /*if ($object == "Account") {
         $field1 = "Id";
@@ -117,11 +114,11 @@ function show_accounts($instance_url, $access_token)
             // If we are not on page 1 we can place the Back button
             if ($pn > 1) {
                 $previous = $pn - 1;
-                $paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen=' . $object . '&pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
+                $paginationDisplay .= '<nav><ul class="pagination pagination-lg"><li><a href="' . $_SERVER['PHP_SELF'] . '?object=' . $object . '&pn=' . $previous . '" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
                 // Render clickable number links that should appear on the left of the target page number
                 for ($i = $pn - 6; $i < $pn; $i++) {
                     if ($i > 0) {
-                        $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen=' . $object . '&pn=' . $i . '">' . $i . '</a><li>';
+                        $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?object=' . $object . '&pn=' . $i . '">' . $i . '</a><li>';
                     }
                 }
             }
@@ -129,7 +126,7 @@ function show_accounts($instance_url, $access_token)
             $paginationDisplay .= '<li class="active"><span>' . $pn . '</span></li>';
             // Render clickable number links that should appear on the right of the target page number
             for ($i = $pn + 1; $i <= $lastPage; $i++) {
-                $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen=' . $object . '&pn=' . $i . '">' . $i . '</a> &nbsp;<li>';
+                $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?object=' . $object . '&pn=' . $i . '">' . $i . '</a> &nbsp;<li>';
                 if ($i >= $pn + 12) {
                     break;
                 }
@@ -137,7 +134,7 @@ function show_accounts($instance_url, $access_token)
             //If we are not on the very last page we can place the Next button*/
             if ($pn != $lastPage) {
                 $nextPage = $pn + 1;
-                $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen=' . $object . '&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
+                $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?object=' . $object . '&pn=' . $nextPage . '" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li></ul>
 </nav>Page <strong>' . $pn . '</strong> of ' . $lastPage . '</div>';
             } // This does the same as above, only checking if we are on the last page, and then generating the "Next"
             if ($pn == $lastPage) {
@@ -243,10 +240,10 @@ function show_accounts($instance_url, $access_token)
         <div class="row">
             <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked">
-                    <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Opportunity</a></li>
-                    <li><a href=""><i class="fa fa-file-o fa-fw"></i>Contact</a></li>
-                    <li><a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Account</a></li>
-                    <li><a href=""><i class="fa fa-table fa-fw"></i>Logout</a></li>
+                    <li class="active"><a href="/layout.php?object=Opportunity"><i class="fa fa-home fa-fw"></i>Opportunity</a></li>
+                    <li><a href="/layout.php?object=Contact"><i class="fa fa-file-o fa-fw"></i>Contact</a></li>
+                    <li><a href="/layout.php?object=Account"><i class="fa fa-bar-chart-o fa-fw"></i>Account</a></li>
+                    <li><a href="?/logout.php"><i class="fa fa-table fa-fw"></i>Logout</a></li>
                 </ul>
             </div>
             <div class="col-md-10 well">
@@ -257,7 +254,7 @@ function show_accounts($instance_url, $access_token)
                 </form>            
             </div>
             <div class="col-md-10 well">
-                <?php show_accounts($instance_url, $access_token); ?>
+                <?php show_accounts($instance_url, $access_token, $object); ?>
             </div>
         </div>
     </div>
