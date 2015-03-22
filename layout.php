@@ -130,7 +130,7 @@ function show_accounts($instance_url, $access_token)
             // Render clickable number links that should appear on the right of the target page number
             for ($i = $pn + 1; $i <= $lastPage; $i++) {
                 $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?objectChosen=' . $object . '&pn=' . $i . '">' . $i . '</a> &nbsp;<li>';
-                if ($i >= $pn + 2) {
+                if ($i >= $pn + 6) {
                     break;
                 }
             }
