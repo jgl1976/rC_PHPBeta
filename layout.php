@@ -6,7 +6,7 @@ error_reporting(-1);
 //comment yeah
 session_start();
 
-function curlResponse($query)
+function curlResponse($query, $instance_url, $access_token)
 {
     $url  = "$instance_url/services/data/v33.0/query?q=" . urlencode($query);
     $curl = curl_init($url);
@@ -74,7 +74,7 @@ function show_accounts($instance_url, $access_token)
     
     $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object";
 
-    $response = curlResponse($query);
+    $response = curlResponse($query, $instance_url, $access_token);
     
     $total_size = $response['totalSize'];
     
@@ -93,7 +93,7 @@ function show_accounts($instance_url, $access_token)
         
         $query = "SELECT $field1, $field2, $field3, $field4, $field5, $field6 FROM $object ORDER BY $field1 LIMIT $itemsPerPage OFFSET $offset";
         
-        $response = curlResponse($query);
+        $response = curlResponse($query, $instance_url, $access_token);
         
 
         $records = $response['records'];
