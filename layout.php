@@ -1,9 +1,7 @@
 <?php
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
-
 session_start();
+
+include_once ("functions.php");
 
 $access_token = $_SESSION['access_token'];
 $instance_url = $_SESSION['instance_url'];
@@ -18,13 +16,13 @@ if (!isset($_GET['objectChosen'])) {
 }
  
 if (!isset($access_token) || $access_token == "") {
+    flash('error', 'Access token missing' );
     header('Location: https://php-restbeta.herokuapp.com');
-    die("Error - access token missing from session!");
 }
  
 if (!isset($instance_url) || $instance_url == "") {
+    flash('error', 'Instance Url missing' );
     header('Location: https://php-restbeta.herokuapp.com');
-    die("Error - instance URL missing from session!");
 }
 
 function curlRequest($query, $instance_url, $access_token)
