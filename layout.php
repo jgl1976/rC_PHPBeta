@@ -7,18 +7,24 @@ session_start();
 
 $access_token = $_SESSION['access_token'];
 $instance_url = $_SESSION['instance_url'];
+
+
+if (!isset($_GET['objectChosen'])) {
+    $object = "Opportunity";
+    $pn     = 1;
+} else {
+    $object = $_GET['objectChosen'];
+}
  
 if (!isset($access_token) || $access_token == "") {
-    die("Error - access token missing from session!");
     header('Location: https://php-restbeta.herokuapp.com');
+    die("Error - access token missing from session!");
 }
  
 if (!isset($instance_url) || $instance_url == "") {
-    die("Error - instance URL missing from session!");
     header('Location: https://php-restbeta.herokuapp.com');
+    die("Error - instance URL missing from session!");
 }
-
-
 
 function curlRequest($query, $instance_url, $access_token)
 {
@@ -38,13 +44,6 @@ function show_accounts($instance_url, $access_token)
 {
     $object = "";
     $pn = "";
-    
-    if (!isset($_GET['objectChosen'])) {
-        $object = "Opportunity";
-        $pn     = 1;
-    } else {
-        $object = $_GET['objectChosen'];
-    }
     
     $object = "Opportunity";
     $field1 = "Id";
@@ -149,11 +148,7 @@ function show_accounts($instance_url, $access_token)
             }
         }
         //////////////////////////////pagination/////////////////////////////////////////////////////////////////
-        
-        $searchBar = '<form method="get" action="' . $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/> in  <Select name="objectChosen"><Option value="Opportunity">Opportunity</option><Option value="Contact">Contact</option><Option value="Account">Account</option> </Select><input type="hidden" value="yes" /><input type="hidden" name="pn" value="1" /><input type="submit" class="btn btn-default" value="Search" /></form>';
-        
-        echo $searchBar;
-        
+                        
         $theDiv = "<br/><div class='container'><div class='table-responsive'><table class='table table-condensed table-hover'>";
         
         foreach ((array) $records as $record) {
@@ -226,13 +221,37 @@ function show_accounts($instance_url, $access_token)
     <link href="css/style.css" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>rC PHP DMA</title>
+    <style>
+        @import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+        body{margin-top:20px;}
+        .fa-fw {width: 2em;}
+    </style>
     </head>
     <body>
-        <?php
-
-
-            show_accounts($instance_url, $access_token);
-        ?>
+   <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#"><i class="fa fa-home fa-fw"></i>Opportunity</a></li>
+                    <li><a href=""><i class="fa fa-file-o fa-fw"></i>Contact</a></li>
+                    <li><a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Account</a></li>
+                    <li><a href=""><i class="fa fa-table fa-fw"></i>Logout</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 well">
+                <form method="get" action="' . $_SERVER['PHP_SELF'] . '" class="navbar-form navbar-left" role="search">
+                    Seach for: <input type="text" name="find" class="form-control" placeholder="Search"/>
+                    <input type="hidden" name="pn" value="1" />
+                    <input type="submit" class="btn btn-default" value="Search" />
+                </form>            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9 well">
+                <?php show_accounts($instance_url, $access_token); ?>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
