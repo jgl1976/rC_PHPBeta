@@ -28,7 +28,7 @@ if(isset($_POST['id'])){
 $sql = "INSERT INTO $tblName ($fieldName1,$fieldName2,$fieldName3,$fieldName4,$fieldName5,$fieldName6) VALUES ('$id','$choice2','$choice3','$choice4','$choice5','$choice6')";
 
 if ($conn->query($sql) === TRUE) {
-    $msg = "New record created successfully <a href='layout.php'>Click Here</a> to go back";
+    $msg = "New record created in the DCoE Database successfully! <a href='adminer123.php' class='btn btn-info'>View and Edit Record Here</a> or <a href='layout.php' class='btn btn-info'>Click Here</a> to go back";
 } else {
     $msg = "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -43,6 +43,9 @@ $conn->close();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 <title>Insert Record</title>
 </head>
 

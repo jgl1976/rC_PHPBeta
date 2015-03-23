@@ -120,7 +120,7 @@ function show_accounts($instance_url, $access_token, $object)
             // Render clickable number links that should appear on the right of the target page number
             for ($i = $pn + 1; $i <= $lastPage; $i++) {
                 $paginationDisplay .= '<li><a href="' . $_SERVER['PHP_SELF'] . '?object=' . $object . '&pn=' . $i . '">' . $i . '</a> &nbsp;<li>';
-                if ($i >= $pn + 12) {
+                if ($i >= $pn + 6) {
                     break;
                 }
             }
@@ -192,7 +192,7 @@ function show_accounts($instance_url, $access_token, $object)
    
     echo "
     <div class='bg-primary' align='center'>
-    <h3>Total Number Of Records: $total_size</h3>
+    <h3>You are working in $object | Total Number Of Records: $total_size</h3>
     </div>
     <br/><br/>
     <div class='table-responsive' style='overflow: hidden;'>
