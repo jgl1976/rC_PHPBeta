@@ -14,6 +14,7 @@ if(isset($_POST['rId'])){
 	$fieldName5 = $_POST['fieldName5'];
 	$fieldName6 = $_POST['fieldName6'];
 	$tblName = $_POST['tblName'];
+
 }else{
 	header("location: layout.php");
 }

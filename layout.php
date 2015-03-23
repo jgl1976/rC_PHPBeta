@@ -232,6 +232,9 @@ function show_accounts($instance_url, $access_token, $object)
    <div class="container-fluid">
         <div class="row">
             <div class="col-md-2">
+            <h1>DMCS</h1>
+            <h5>rC Data Migration and Calculator System</h5>
+            <h6>Version 0.5.3</h6>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="/layout.php?object=Opportunity"><i class="fa fa-home fa-fw"></i>Opportunity</a></li>
                     <li><a href="/layout.php?object=Contact"><i class="fa fa-file-o fa-fw"></i>Contact</a></li>
