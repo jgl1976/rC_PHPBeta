@@ -10,26 +10,20 @@ include_once ("functions.php");
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>rC PHP DMA</title>
+<title>rC-DMCS</title>
 
-</head>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
-
-    <head>
-    <title>rC PHP DMA</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     </head>
 <body>
 <div class="container">
-
-<h1>DMA PHP App</h1>
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4"><p class="text-center"><h1>rC-DMCS</h1></p>
 <img src="img/beta.png" alt="Beta" class="img-rounded"><br>
-<h2>Please sign into Salesforce</h2>
+<h3>roundCorner Data Migration Calculator System</h3>
+<h4>Log into SalesForce to gain access to the rC-DMCS Gateway</h4>
 <?php flash('error'); ?>
 
 
@@ -40,10 +34,10 @@ include_once ("functions.php");
     } else {
         document.write("<a href=\"oauth.php\" class=\"btn btn-primary btn-lg\">Sign In</a>");
     }
-</script>
+</script></div>
+<div class="col-md-4"></div>
 
-
-
+</div>
     </div> <!-- /container -->
 </body>
 
